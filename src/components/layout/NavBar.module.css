@@ -1,6 +1,11 @@
 .logo{
     font-size: 1.5rem;
     font-weight: 350;
+    text-shadow: 2px 2px 16px white;
+}
+
+.logo:hover{
+    text-shadow: 2px 2px 8px white;
 }
 
 header{
@@ -9,8 +14,7 @@ header{
     top:0;
     background-color: rgba(40, 41, 61,0.4);
     color:white;
+    display: flex;
 }
 
-.logo:hover{
-    text-shadow: 1px 1px 8px white;
-}
+

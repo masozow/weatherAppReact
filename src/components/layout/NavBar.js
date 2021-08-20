@@ -5,7 +5,7 @@ function NavBar(props) {
     return (
         <header>
             <div className={styles.logo}>
-                WheatherApp
+                WeatherApp
             </div>
             <MenuButton />
         </header>
