@@ -1,0 +1,14 @@
+.card{
+    margin:0 auto;
+    width:90%;
+    max-width: 70rem;
+    
+    height: auto;
+    border-radius: 10px;
+    background-color:rgb(40, 41, 61);
+    color:white;
+    display:flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}

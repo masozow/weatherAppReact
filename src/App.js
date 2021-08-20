@@ -1,15 +1,15 @@
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Layout from './components/layout/Layout';
-import FutureForecastPage from './pages/FutureForecastPage';
+import HourlyForecastPage from './pages/HourlyForecastPage';
 import HomePage from './pages/HomePage';
 
 function App() {
   return (
     <Layout>
       <Switch>
-        <Route path='/forecast'>
-          <FutureForecastPage />
+        <Route path='/hourlyForecast'>
+          <HourlyForecastPage />
         </Route>
         <Route path='/' exact>
           <HomePage />
