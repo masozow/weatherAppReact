@@ -4,17 +4,20 @@ import Card from "../components/layout/Card";
 import styles from './HomePage.module.css';
 import { Clean5DaysForecastData } from "../functionality/DataPrepare";
 
+const languaje = 'en';
+const units = 'metric';
+
 function HomePage(props) {
     const [city, setCity] = useState('');
     const [list, setList] = useState([]);
 
     useEffect(() => {
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?id=3590979&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${'metric'}&lang=${'en'}`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?id=3590979&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${units}&lang=${languaje}`)
             .then((response) => {
                 return response.json();
             })
             .then((data) => {
-                const [cityData, listData] = Clean5DaysForecastData(data, 'C', 'en');
+                const [cityData, listData] = Clean5DaysForecastData(data, 'C', languaje);
                 setCity(cityData);
                 setList(listData);
             }).catch((error) => {
@@ -41,22 +44,22 @@ function HomePage(props) {
             <h1 className={styles.title}>Next 5 days forecast</h1>
             <Card >
                 <h3 className={styles.subTitle}>{city}</h3>
-                <ul>
-                    {
-                        list.map((item, idx) => {
-                            return (
-                                <DailyWeather
-                                    key={idx}
-                                    weekDay={item.weekDay}
-                                    dateTime={item.dateTime}
-                                    icon={item.icon}
-                                    description={item.description}
-                                    temperature={item.temperature}
-                                />
-                            )
-                        })
-                    }
-                </ul>
+
+                {
+                    list.map((item, idx) => {
+                        return (
+                            <DailyWeather
+                                key={idx}
+                                weekDay={item.weekDay}
+                                dateTime={item.dateTime}
+                                icon={item.icon}
+                                description={item.description}
+                                temperature={item.temperature}
+                            />
+                        )
+                    })
+                }
+
             </Card>
         </>
     );

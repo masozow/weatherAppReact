@@ -3,6 +3,7 @@
     font-weight: 350;
     text-shadow: 2px 2px 16px white;
     cursor: pointer;
+    flex-grow: 1;
 }
 
 .logo:hover{

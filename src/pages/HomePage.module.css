@@ -1,11 +1,7 @@
 .title{
     font-weight: 400;
 }
-ul{
-    list-style: none;
-    margin:0;
-    padding:0;
-}
+
 .subTitle{
     flex-basis: 100%;
     font-weight: 400;
