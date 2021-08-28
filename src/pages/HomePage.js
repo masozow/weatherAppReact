@@ -29,9 +29,7 @@ function HomePage(props) {
         <>
             <h1 className={styles.title}>Next 5 days forecast</h1>
             <Card >
-                {/* <>
-                <h3 className={styles.subTitle}>{city}</h3>
-                */}
+                {/* <h3 className={styles.subTitle}>{city}</h3> */}
                 <ul>
                     {
                         list.map((item, idx) => {
@@ -48,7 +46,6 @@ function HomePage(props) {
                         })
                     }
                 </ul>
-                {/* </> */}
             </Card>
         </>
     );
