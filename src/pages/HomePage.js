@@ -5,11 +5,11 @@ import styles from './HomePage.module.css';
 import { Clean5DaysForecastData } from "../functionality/DataPrepare";
 
 function HomePage(props) {
-    const [city, setCity] = useState({});
+    const [city, setCity] = useState('');
     const [list, setList] = useState([]);
 
     useEffect(() => {
-        fetch(`http://api.openweathermap.org/data/2.5/forecast?id=3590979&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${'metric'}&lang=${'en'}`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?id=3590979&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${'metric'}&lang=${'en'}`)
             .then((response) => {
                 return response.json();
             })
@@ -17,6 +17,17 @@ function HomePage(props) {
                 const [cityData, listData] = Clean5DaysForecastData(data, 'C', 'en');
                 setCity(cityData);
                 setList(listData);
+            }).catch((error) => {
+                setCity('unknown');
+                setList([
+                    {
+                        dateTime: 'unknown',
+                        description: 'unknown',
+                        icon: 'none',
+                        temperature: 'unknown',
+                        weekDay: 'unknown'
+                    }
+                ]);
             });
     }, [setCity, setList]);
 
