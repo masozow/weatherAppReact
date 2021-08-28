@@ -5,4 +5,9 @@
     margin: 2rem 1rem;
     padding:0.5rem;
     height: 50vh;
+    cursor: pointer;
+}
+
+.dailyWeatherCard:hover{
+    box-shadow:  1px 1px 8px white;
 }
