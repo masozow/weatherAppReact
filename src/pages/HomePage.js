@@ -32,20 +32,22 @@ function HomePage(props) {
                 {/* <>
                 <h3 className={styles.subTitle}>{city}</h3>
                 */}
-                {
-                    list.map((item, idx) => {
-                        return (
-                            <DailyWeather
-                                key={idx}
-                                weekDay={item.weekDay}
-                                dateTime={item.dateTime}
-                                icon={item.icon}
-                                description={item.description}
-                                temperature={item.temperature}
-                            />
-                        )
-                    })
-                }
+                <ul>
+                    {
+                        list.map((item, idx) => {
+                            return (
+                                <DailyWeather
+                                    key={idx}
+                                    weekDay={item.weekDay}
+                                    dateTime={item.dateTime}
+                                    icon={item.icon}
+                                    description={item.description}
+                                    temperature={item.temperature}
+                                />
+                            )
+                        })
+                    }
+                </ul>
                 {/* </> */}
             </Card>
         </>

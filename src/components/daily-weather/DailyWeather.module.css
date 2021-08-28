@@ -6,6 +6,7 @@
     padding:0.5rem;
     height: 50vh;
     cursor: pointer;
+    display: inline-block;
 }
 
 .dailyWeatherCard:hover{
