@@ -2,7 +2,7 @@ import { monthName, weekdays } from "./LocaleStrings";
 
 function formattedDateTime(dateTimeText = '', lang = 'en') {
     const date = new Date(dateTimeText);
-    const month = monthName(date.getMonth(), lang);
+    const month = monthName(parseInt(date.getMonth()), lang);
     const day = date.getDate();
     const hours = date.getHours();
     const minutes = date.getMinutes();
@@ -11,7 +11,7 @@ function formattedDateTime(dateTimeText = '', lang = 'en') {
 
 function formattedWeekDay(dateTimeText = '', lang = 'en') {
     const date = new Date(dateTimeText);
-    return weekdays(date.getDay(), lang)
+    return weekdays(parseInt(date.getDay()), lang)
 }
 
 function firstCharToUpper(dataString = '') {

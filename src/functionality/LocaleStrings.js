@@ -17,7 +17,7 @@ export function weekdays(day = 0, locale = 'en') {
         }
     }
     else {
-        return 'Inalid day number';
+        return 'Inalid day number ' + day;
     }
 };
 
@@ -32,6 +32,6 @@ export function monthName(month = 0, locale = 'en') {
         }
     }
     else {
-        return 'Invalid month number';
+        return 'Invalid month number ' + month;
     }
 }
