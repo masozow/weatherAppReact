@@ -22,11 +22,11 @@ const iconRelations = {
     'default': faRainbow
 }
 export function iconNameSelection(iconName = '', icons = iconRelations) {
-    if (iconRelations[iconName] && iconName !== 'default') {
-        return iconRelations[iconName];
+    if (icons[iconName] && iconName !== 'default') {
+        return icons[iconName];
     }
     else {
-        return iconRelations['default'];
+        return icons['default'];
     }
 }
 

@@ -20,18 +20,19 @@ function HomePage(props) {
                 const [cityData, listData] = Clean5DaysForecastData(data, 'C', languaje);
                 setCity(cityData);
                 setList(listData);
-            }).catch((error) => {
-                setCity('unknown');
-                setList([
-                    {
-                        dateTime: 'unknown',
-                        description: 'unknown',
-                        icon: 'none',
-                        temperature: 'unknown',
-                        weekDay: 'unknown'
-                    }
-                ]);
             });
+        //.catch((error) => {
+        //     setCity('unknown');
+        //     setList([
+        //         {
+        //             dateTime: 'unknown',
+        //             description: 'unknown',
+        //             icon: 'none',
+        //             temperature: 'unknown',
+        //             weekDay: 'unknown'
+        //         }
+        //     ]);
+        //});
     }, [setCity, setList]);
 
     useEffect(() => {
