@@ -1,17 +1,17 @@
-import { monthName, weekdays } from "./LocaleStrings";
+import { monthName, weekdays } from "./DateStrings";
 
-function formattedDateTime(dateTimeText = '', lang = 'en') {
+function formattedDateTime(dateTimeText = '', lang = 'en', formattingMonthFunction = monthName) {
     const date = new Date(dateTimeText);
-    const month = monthName(parseInt(date.getMonth()), lang);
+    const month = formattingMonthFunction(date.getMonth(), lang);
     const day = date.getDate();
     const hours = date.getHours();
     const minutes = date.getMinutes();
     return `${month} ${day}, ${hours === 0 ? '00' : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
 }
 
-function formattedWeekDay(dateTimeText = '', lang = 'en') {
+function formattedWeekDay(dateTimeText = '', lang = 'en', formattingFunction = weekdays) {
     const date = new Date(dateTimeText);
-    return weekdays(parseInt(date.getDay()), lang)
+    return formattingFunction(date.getDay(), lang);
 }
 
 function firstCharToUpper(dataString = '') {
@@ -22,8 +22,8 @@ function formattedTemperature(temp = 0, tempUnit = 'C') {
     return `${temp} °${tempUnit}`;
 }
 
-export function Clean5DaysForecastData(data, tempUnit = 'C', lang = 'en') {
-    const city = formattedCity(data.city);
+export function Clean5DaysForecastData(data, tempUnit = 'C', lang = 'en', formattingCityFunction = formattedCity) {
+    const city = formattingCityFunction(data.city);
     const dataLength = data.list.length;
     const filteredList = [];
     for (let index = 0; index < dataLength; index += 8) {
