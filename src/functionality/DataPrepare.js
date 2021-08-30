@@ -6,8 +6,8 @@ function formattedDateTime(dateTimeText, lang = 'en', formattingMonthFunction = 
     const day = date.getDate();
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    // return `${month} ${day}, ${hours === 0 ? '00' : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
-    return dateTimeText + ' / ' + date + ' // ' + date.getMonth() + ' ' + day + ', ' + hours + ':' + minutes;
+    return `${month} ${day}, ${hours === 0 ? '00' : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+    // return dateTimeText + ' / ' + date + ' // ' + date.getMonth() + ' ' + day + ', ' + hours + ':' + minutes;
 }
 
 function formattedWeekDay(dateTimeText = '', lang = 'en', formattingFunction = weekdays) {
@@ -31,8 +31,8 @@ export function Clean5DaysForecastData(data, tempUnit = 'C', lang = 'en', format
         const singleData = {};
         singleData['description'] = firstCharToUpper(data.list[index].weather[0].description);
         singleData['temperature'] = formattedTemperature(data.list[index].main.temp, tempUnit);
-        singleData['dateTime'] = formattedDateTime(data.list[index].dt_txt, lang);
-        singleData['weekDay'] = formattedWeekDay(data.list[index].dt_txt, lang);
+        singleData['dateTime'] = formattedDateTime(data.list[index].dt * 1000, lang);
+        singleData['weekDay'] = formattedWeekDay(data.list[index].dt * 1000, lang);
         singleData['icon'] = data.list[index].weather[0].icon;
         filteredList.push(singleData);
     }
