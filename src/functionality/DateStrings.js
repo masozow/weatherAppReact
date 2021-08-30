@@ -1,6 +1,6 @@
 import { monthNameLocales, weekdaysLocales } from "./LocaleStrings";
 
-export function weekdays(day, locale = 'en', weekDaysStrings = weekdaysLocales) {
+export function weekdays(day = 0, locale = 'en', weekDaysStrings = weekdaysLocales) {
     if (day >= 0 && day < 7) {
         if (weekDaysStrings[locale][day]) {
             return weekDaysStrings[locale][day];
@@ -14,7 +14,7 @@ export function weekdays(day, locale = 'en', weekDaysStrings = weekdaysLocales) 
     }
 };
 
-export function monthName(month, locale = 'en', monthNameStrings = monthNameLocales) {
+export function monthName(month = 0, locale = 'en', monthNameStrings = monthNameLocales) {
     if (month >= 0 && month < 12) {
         if (monthNameStrings[locale][month]) {
             return monthNameStrings[locale][month];

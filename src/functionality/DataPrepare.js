@@ -1,6 +1,6 @@
 import { monthName, weekdays } from "./DateStrings";
 
-function formattedDateTime(dateTimeText = '', lang = 'en', formattingMonthFunction = monthName) {
+function formattedDateTime(dateTimeText, lang = 'en', formattingMonthFunction = monthName) {
     const date = new Date(dateTimeText);
     const month = formattingMonthFunction(date.getMonth(), lang);
     const day = date.getDate();
