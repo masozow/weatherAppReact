@@ -6,7 +6,8 @@ function formattedDateTime(dateTimeText, lang = 'en', formattingMonthFunction = 
     const day = date.getDate();
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    return `${month} ${day}, ${hours === 0 ? '00' : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+    // return `${month} ${day}, ${hours === 0 ? '00' : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+    return date.getMonth() + ' ' + day + ', ' + hours + ':' + minutes;
 }
 
 function formattedWeekDay(dateTimeText = '', lang = 'en', formattingFunction = weekdays) {
