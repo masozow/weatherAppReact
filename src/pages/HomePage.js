@@ -4,7 +4,7 @@ import Card from "../components/layout/Card";
 import styles from './HomePage.module.css';
 import { Clean5DaysForecastData } from "../functionality/DataPrepare";
 
-const languaje = 'en';
+const languaje = 'es';
 const units = 'metric';
 
 function HomePage(props) {

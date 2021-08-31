@@ -1,18 +1,10 @@
-import { monthName, weekdays } from "./DateStrings";
+import { monthDay, timeString, weekDay } from "./DateStrings";
 
-function formattedDateTime(dateTimeText, lang = 'en', formattingMonthFunction = monthName) {
+function formattedDateTime(dateTimeText, lang = 'en', formattingDateFunction = monthDay, formattingTimeFunction = timeString) {
     const date = new Date(dateTimeText);
-    const month = formattingMonthFunction(date.getMonth(), lang);
-    const day = date.getDate();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    return `${month} ${day}, ${hours === 0 ? '00' : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
-    // return dateTimeText + ' / ' + date + ' // ' + date.getMonth() + ' ' + day + ', ' + hours + ':' + minutes;
-}
-
-function formattedWeekDay(dateTimeText = '', lang = 'en', formattingFunction = weekdays) {
-    const date = new Date(dateTimeText);
-    return formattingFunction(date.getDay(), lang);
+    const monthDayString = monthDay(date, lang);
+    const time = timeString(date, lang);
+    return `${monthDayString}, ${time}`;
 }
 
 function firstCharToUpper(dataString = '') {
@@ -21,6 +13,10 @@ function firstCharToUpper(dataString = '') {
 
 function formattedTemperature(temp = 0, tempUnit = 'C') {
     return `${temp} °${tempUnit}`;
+}
+
+function formattedCity(data = '') {
+    return data.name + ', ' + data.country;
 }
 
 export function Clean5DaysForecastData(data, tempUnit = 'C', lang = 'en', formattingCityFunction = formattedCity) {
@@ -32,7 +28,7 @@ export function Clean5DaysForecastData(data, tempUnit = 'C', lang = 'en', format
         singleData['description'] = firstCharToUpper(data.list[index].weather[0].description);
         singleData['temperature'] = formattedTemperature(data.list[index].main.temp, tempUnit);
         singleData['dateTime'] = formattedDateTime(data.list[index].dt * 1000, lang);
-        singleData['weekDay'] = formattedWeekDay(data.list[index].dt * 1000, lang);
+        singleData['weekDay'] = firstCharToUpper(weekDay(data.list[index].dt * 1000, lang));
         singleData['icon'] = data.list[index].weather[0].icon;
         filteredList.push(singleData);
     }
@@ -43,6 +39,3 @@ export function Clean5DaysForecastData(data, tempUnit = 'C', lang = 'en', format
     return [city, filteredList];
 }
 
-function formattedCity(data = '') {
-    return data.name + ', ' + data.country;
-}
