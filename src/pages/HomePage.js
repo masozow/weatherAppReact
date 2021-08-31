@@ -6,34 +6,22 @@ import { Clean5DaysForecastData } from "../functionality/DataPrepare";
 import { homePageTitle } from "../functionality/LocaleStrings";
 
 const languaje = 'es';
-const units = 'metric';
+const unitSystem = 'metric';
 
 function HomePage(props) {
     const [city, setCity] = useState('');
     const [list, setList] = useState([]);
 
     useEffect(() => {
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?id=3590979&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${units}&lang=${languaje}`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?id=3590979&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${unitSystem}&lang=${languaje}`)
             .then((response) => {
                 return response.json();
             })
             .then((data) => {
-                const [cityData, listData] = Clean5DaysForecastData(data, 'C', languaje);
+                const [cityData, listData] = Clean5DaysForecastData(data, languaje, unitSystem);
                 setCity(cityData);
                 setList(listData);
             });
-        //.catch((error) => {
-        //     setCity('unknown');
-        //     setList([
-        //         {
-        //             dateTime: 'unknown',
-        //             description: 'unknown',
-        //             icon: 'none',
-        //             temperature: 'unknown',
-        //             weekDay: 'unknown'
-        //         }
-        //     ]);
-        //});
     }, [setCity, setList]);
 
     useEffect(() => {
