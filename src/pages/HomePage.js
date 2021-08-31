@@ -3,6 +3,7 @@ import DailyWeather from "../components/daily-weather/DailyWeather";
 import Card from "../components/layout/Card";
 import styles from './HomePage.module.css';
 import { Clean5DaysForecastData } from "../functionality/DataPrepare";
+import { homePageTitle } from "../functionality/LocaleStrings";
 
 const languaje = 'es';
 const units = 'metric';
@@ -42,7 +43,7 @@ function HomePage(props) {
 
     return (
         <>
-            <h1 className={styles.title}>Next 5 days forecast</h1>
+            <h1 className={styles.title}>{homePageTitle[languaje]}</h1>
             <Card >
                 <h3 className={styles.subTitle}>{city}</h3>
 
