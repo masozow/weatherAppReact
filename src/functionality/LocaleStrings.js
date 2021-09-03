@@ -3,7 +3,10 @@ export const homePageTitle = {
     es: 'Pronóstico para los próximos 5 días'
 };
 
-export const toggleLanguage = {
-    en: 'Language',
-    es: 'Idioma'
+export const navBarStrings =
+{
+    toggleLanguage: {
+        en: 'Language',
+        es: 'Idioma'
+    }
 }
