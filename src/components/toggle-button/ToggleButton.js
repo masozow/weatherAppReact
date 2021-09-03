@@ -13,12 +13,18 @@ function ToggleButton(props) {
         console.log(toggleSide);
     }
     return (
-        <>
+        <div className={styles.toggleButtonContainer}>
             <label className={styles.toggleButtonText}>{props.text}</label>
-            <div className={styles.toggleButtonStructure} onClick={handleToggle}>
-                <div className={classes}></div>
-            </div>
-        </>
+            <p>
+                {props.leftOption}
+                &nbsp;
+                <div className={styles.toggleButtonStructure} onClick={handleToggle}>
+                    <div className={classes}></div>
+                </div>
+                &nbsp;
+                {props.rightOption}
+            </p>
+        </div>
     );
 }
 

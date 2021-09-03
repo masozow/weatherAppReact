@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { toggleLanguage } from "../../functionality/LocaleStrings";
 import WeatherContext from "../../store/WheaterContext";
 import ToggleButton from "../toggle-button/ToggleButton";
 
@@ -8,7 +9,7 @@ function NavLinks(props) {
         <>
             {/* <label htmlFor="change_languaje">Change languaje</label>
             <input type="checkbox" id="change_languaje" onChange={weatherContext.changeLanguaje} /> */}
-            <ToggleButton text={'Languaje'} callbackFunction={weatherContext.changeLanguaje} />
+            <ToggleButton text={toggleLanguage[weatherContext.languaje]} leftOption={'EN'} rightOption={'ES'} callbackFunction={weatherContext.changeLanguaje} />
         </>
     );
 }

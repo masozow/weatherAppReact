@@ -1,25 +1,26 @@
-.logo{
+.logo {
     font-size: 1.5rem;
     font-weight: 350;
     text-shadow: 2px 2px 16px white;
     flex-grow: 1;
-    
+
 }
-a:link{
+
+a:link {
     text-decoration: none;
 }
 
-.logo:hover{
+.logo:hover {
     text-shadow: 1px 1px 8px white;
 }
 
-header{
-    padding: 1rem 0.5rem;
-    position:sticky;
-    top:0;
-    background-color: rgba(40, 41, 61,0.4);
-    color:white;
+header {
+    padding: 0.5rem;
+    min-height: 3rem;
+    position: sticky;
+    top: 0;
+    background-color: rgba(40, 41, 61, 0.4);
+    color: white;
     display: flex;
+    align-items: center;
 }
-
-
