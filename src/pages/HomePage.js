@@ -6,15 +6,13 @@ import { Clean5DaysForecastData } from "../functionality/DataPrepare";
 import { homePageTitle } from "../functionality/LocaleStrings";
 import WeatherContext from "../store/WheaterContext";
 
-const unitSystem = 'imperial';
-
 function HomePage(props) {
     const [city, setCity] = useState('');
     const [list, setList] = useState([]);
     const weatherContext = useContext(WeatherContext);
 
     const language = weatherContext.languaje;
-
+    const unitSystem = weatherContext.unitSystem;
     useEffect(() => {
         //ny: 5128581
         //quet: 3590979
@@ -27,7 +25,7 @@ function HomePage(props) {
                 setCity(cityData);
                 setList(listData);
             });
-    }, [setCity, setList, language]);
+    }, [setCity, setList, language, unitSystem]);
 
     // useEffect(() => {
     //     console.log(list);

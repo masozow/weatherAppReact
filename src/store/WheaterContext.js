@@ -19,11 +19,12 @@ export function WeatherContextProvider(props) {
     const [userWeatherData, setUserWeatherData] = useState([]);
 
     function handleSetUnitSystem() {
-        if (userUnitSystem === 'en')
-            setUserUnitSystem('es');
+        if (userUnitSystem === 'imperial')
+            setUserUnitSystem('metric');
         else
-            setUserUnitSystem('en');
+            setUserUnitSystem('imperial');
     }
+
     function handleSetLanguaje() {
         if (userLanguaje === 'en')
             setUserLanguaje('es');

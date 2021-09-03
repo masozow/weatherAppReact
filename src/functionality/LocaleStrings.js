@@ -8,5 +8,13 @@ export const navBarStrings =
     toggleLanguage: {
         en: 'Language',
         es: 'Idioma'
+    },
+    toggleTemperature: {
+        en: 'Temperature',
+        es: 'Temperatura'
+    },
+    toggleTheme: {
+        en: 'Theme',
+        es: 'Tema'
     }
 }
