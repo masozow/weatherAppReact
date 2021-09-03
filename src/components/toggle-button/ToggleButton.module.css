@@ -5,6 +5,7 @@
     background-color: gray;
     display: inline-block;
     position: relative;
+    padding: 0;
 }
 
 .toggleButtonBouncingCircle {
@@ -15,17 +16,17 @@
     position: absolute;
     background-color: white;
     z-index: 5;
-    transition: ease-in 2s;
+    transition: ease-in 0.2s;
 }
 
 .left {
-    left: 0;
-    transition: all 2s ease;
+
+    transform: translate(0, 0);
 }
 
 .right {
-    right: 0;
-    transition: all 2s ease;
+
+    transform: translate(150%, 0);
 }
 
 .toggleButtonText {

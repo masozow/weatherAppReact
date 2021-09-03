@@ -13,21 +13,21 @@ function HomePage(props) {
     const [list, setList] = useState([]);
     const weatherContext = useContext(WeatherContext);
 
-    const languaje = weatherContext.languaje;
+    const language = weatherContext.languaje;
 
     useEffect(() => {
         //ny: 5128581
         //quet: 3590979
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?id=3590979&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${unitSystem}&lang=${languaje}`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?id=3590979&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${unitSystem}&lang=${language}`)
             .then((response) => {
                 return response.json();
             })
             .then((data) => {
-                const [cityData, listData] = Clean5DaysForecastData(data, languaje, unitSystem);
+                const [cityData, listData] = Clean5DaysForecastData(data, language, unitSystem);
                 setCity(cityData);
                 setList(listData);
             });
-    }, [setCity, setList, languaje]);
+    }, [setCity, setList, language]);
 
     // useEffect(() => {
     //     console.log(list);
@@ -37,7 +37,7 @@ function HomePage(props) {
 
     return (
         <>
-            <h1 className={styles.title}>{homePageTitle[languaje]}</h1>
+            <h1 className={styles.title}>{homePageTitle[language]}</h1>
             <Card >
                 <h3 className={styles.subTitle}>{city}</h3>
 
