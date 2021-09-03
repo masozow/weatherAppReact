@@ -1,14 +1,14 @@
-.dailyWeatherCard{
+.dailyWeatherCard {
     border-radius: 10px;
     border: 1px solid white;
     width: 11rem;
-    margin: 1.5rem 0.5rem;
+    margin: 1.5rem 0.75rem;
     min-height: 30vh;
     cursor: pointer;
     display: inline-block;
     overflow: hidden;
 }
 
-.dailyWeatherCard:hover{
-    box-shadow:  1px 1px 8px white;
+.dailyWeatherCard:hover {
+    box-shadow: 1px 1px 8px white;
 }

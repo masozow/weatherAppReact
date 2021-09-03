@@ -1,18 +1,23 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DailyWeather from "../components/daily-weather/DailyWeather";
 import Card from "../components/layout/Card";
 import styles from './HomePage.module.css';
 import { Clean5DaysForecastData } from "../functionality/DataPrepare";
 import { homePageTitle } from "../functionality/LocaleStrings";
+import WeatherContext from "../store/WheaterContext";
 
-const languaje = 'es';
-const unitSystem = 'metric';
+const unitSystem = 'imperial';
 
 function HomePage(props) {
     const [city, setCity] = useState('');
     const [list, setList] = useState([]);
+    const weatherContext = useContext(WeatherContext);
+
+    const languaje = weatherContext.languaje;
 
     useEffect(() => {
+        //ny: 5128581
+        //quet: 3590979
         fetch(`https://api.openweathermap.org/data/2.5/forecast?id=3590979&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${unitSystem}&lang=${languaje}`)
             .then((response) => {
                 return response.json();
@@ -22,12 +27,13 @@ function HomePage(props) {
                 setCity(cityData);
                 setList(listData);
             });
-    }, [setCity, setList]);
+    }, [setCity, setList, languaje]);
 
-    useEffect(() => {
-        console.log(list);
-        console.log(city);
-    }, [list, city])
+    // useEffect(() => {
+    //     console.log(list);
+    //     console.log(city);
+    //     console.log(languaje);
+    // }, [list, city, languaje])
 
     return (
         <>
