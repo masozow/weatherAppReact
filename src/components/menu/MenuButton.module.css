@@ -1,0 +1,9 @@
+.menuButtonContainer {
+    display: inline;
+}
+
+@media screen and (min-width:920px) {
+    .menuButtonContainer {
+        display: none;
+    }
+}

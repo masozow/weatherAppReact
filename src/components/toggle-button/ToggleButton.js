@@ -10,8 +10,8 @@ function ToggleButton(props) {
     function handleToggle(e) {
         setToggleSide(!toggleSide);
         props.callbackFunction();
-        console.log(toggleSide);
     }
+
     return (
         <span className={styles.toggleButtonContainer}>
             <label className={styles.toggleButtonText}>{props.text}</label>
