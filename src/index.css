@@ -9,8 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: #1C1C27; */
-  background-color: #E9ECEF;
+  background-color: #1C1C27;
 }
 
 /* .bodyLightTheme {

@@ -10,11 +10,11 @@ function Layout(props) {
     const mainClasses = classNames(styles.main, { [styles.mainLightTheme]: weatherContext.theme })
     return (
         <>
+            <BodyStyling themeSelector={weatherContext.theme} />
             <NavBar themeSelector={weatherContext.theme} />
             <main className={mainClasses}>
                 {props.children}
             </main>
-            <BodyStyling themeSelector={weatherContext.theme} />
         </>
     );
 
