@@ -9,14 +9,24 @@ import WeatherContext from "../store/WheaterContext";
 function HomePage(props) {
     const [city, setCity] = useState('');
     const [list, setList] = useState([]);
+    const [apiCallCondition, setApiCallCondition] = useState('id=3590979');
+
     const weatherContext = useContext(WeatherContext);
 
     const language = weatherContext.languaje;
     const unitSystem = weatherContext.unitSystem;
+
     useEffect(() => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                setApiCallCondition(`lat=${position.coords.latitude}&lon=${position.coords.longitude}`);
+                console.log(position);
+                console.log(apiCallCondition);
+            });
+        }
         //ny: 5128581
         //quet: 3590979
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?id=3590979&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${unitSystem}&lang=${language}`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?${apiCallCondition}&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${unitSystem}&lang=${language}`)
             .then((response) => {
                 return response.json();
             })
@@ -25,7 +35,7 @@ function HomePage(props) {
                 setCity(cityData);
                 setList(listData);
             });
-    }, [setCity, setList, language, unitSystem]);
+    }, [setCity, setList, setApiCallCondition, language, unitSystem, apiCallCondition]);
 
     // useEffect(() => {
     //     console.log(list);
