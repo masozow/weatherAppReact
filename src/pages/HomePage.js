@@ -9,7 +9,7 @@ import WeatherContext from "../store/WheaterContext";
 function HomePage(props) {
     const [city, setCity] = useState('');
     const [list, setList] = useState([]);
-    const [apiCallCondition, setApiCallCondition] = useState('id=3590979');
+    const [apiCallCondition, setApiCallCondition] = useState('id=5128581');
 
     const weatherContext = useContext(WeatherContext);
 
@@ -17,7 +17,7 @@ function HomePage(props) {
     const unitSystem = weatherContext.unitSystem;
 
     useEffect(() => {
-        if (navigator.geolocation) {
+        if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((position) => {
                 setApiCallCondition(`lat=${position.coords.latitude}&lon=${position.coords.longitude}`);
                 console.log(position);
