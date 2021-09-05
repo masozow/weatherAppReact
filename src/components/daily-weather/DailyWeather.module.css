@@ -7,8 +7,18 @@
     cursor: pointer;
     display: inline-block;
     overflow: hidden;
+    transition: ease-in 0.2s;
 }
 
 .dailyWeatherCard:hover {
     box-shadow: 1px 1px 8px white;
+}
+
+.dailyWeatherCardLightTheme {
+    border: 1px solid #212428;
+    transition: ease-in 0.2s;
+}
+
+.dailyWeatherCardLightTheme:hover {
+    box-shadow: 1px 1px 8px #212428;
 }

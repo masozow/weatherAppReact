@@ -1,5 +1,5 @@
  .navBarButtonsContainer {
-     display: none
+     display: none;
  }
 
  .navBarButtonsContainerActive {
@@ -10,6 +10,13 @@
      right: 0;
      top: 3rem;
      background-color: rgba(40, 41, 61, 0.8);
+     backdrop-filter: blur(3px);
+     transition: ease-in 0.2s;
+ }
+
+ .navBarButtonsContainerActiveLightTheme {
+     background-color: rgba(255, 252, 247, 0.8);
+     transition: ease-in 0.2s;
  }
 
  .navBarButton {

@@ -13,6 +13,12 @@
     display: inline-block;
     position: relative;
     padding: 0;
+    transition: ease-in 0.2s;
+}
+
+.toggleButtonStructureLightTheme {
+    background-color: #D4D4D4;
+    transition: ease-in 0.2s;
 }
 
 .toggleButtonBouncingCircle {
@@ -26,8 +32,11 @@
     transition: ease-in 0.2s;
 }
 
-.left {
+.toggleButtonBouncingCircleLightTheme {
+    background-color: #1E201F;
+}
 
+.left {
     transform: translate(0, 0);
 }
 
@@ -36,10 +45,16 @@
     transform: translate(150%, 0);
 }
 
-.toggleButtonText {
+.toggleButtonTitle {
     display: block;
     margin-bottom: 0.2rem;
     color: lightgray;
+    transition: ease-in 0.2s;
+}
+
+.toggleButtonTitleLightTheme {
+    color: #1E201F;
+    transition: ease-in 0.2s;
 }
 
 .toggleButtonContainer p {

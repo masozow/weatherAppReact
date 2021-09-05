@@ -1,5 +1,11 @@
-.main{
-    margin:0 auto;
+.main {
+    margin: 0 auto;
     text-align: center;
-    color:white;
+    color: white;
+    transition: ease-in 0.2s;
+}
+
+.mainLightTheme {
+    color: #212428;
+    transition: ease-in 0.2s;
 }

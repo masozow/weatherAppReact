@@ -3,7 +3,12 @@
     font-weight: 350;
     text-shadow: 2px 2px 16px white;
     flex-grow: 1;
+    transition: ease-in 0.2s;
+}
 
+.logoLightTheme {
+    text-shadow: 2px 2px 16px #212428;
+    transition: ease-in 0.2s;
 }
 
 a:link {
@@ -14,7 +19,11 @@ a:link {
     text-shadow: 1px 1px 8px white;
 }
 
-header {
+.logoLightTheme:hover {
+    text-shadow: 1px 1px 8px #212428;
+}
+
+.header {
     padding: 0.5rem;
     min-height: 3rem;
     position: sticky;
@@ -23,4 +32,11 @@ header {
     color: white;
     display: flex;
     align-items: center;
+    transition: ease-in 0.2s;
+}
+
+.headerLightTheme {
+    background-color: rgba(255, 252, 247, 0.4);
+    color: #212428;
+    transition: ease-in 0.2s;
 }

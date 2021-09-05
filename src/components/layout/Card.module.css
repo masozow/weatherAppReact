@@ -1,15 +1,22 @@
-.card{
-    margin:0 auto;
-    width:90%;
+.card {
+    margin: 0 auto;
+    width: 90%;
     max-width: 70rem;
     height: auto;
     border-radius: 10px;
-    background-color:rgb(40, 41, 61);
-    color:white;
-    display:flex;
+    background-color: rgb(40, 41, 61);
+    color: white;
+    display: flex;
     align-content: center;
     flex-wrap: wrap;
     justify-content: center;
+    transition: ease-in 0.2s;
     /* To make padding squish accordiing to screen */
     /* padding-block: min(10vh,10rem); */
+}
+
+.cardLightTheme {
+    background-color: rgb(255, 252, 247);
+    color: #212428;
+    transition: ease-in 0.2s;
 }

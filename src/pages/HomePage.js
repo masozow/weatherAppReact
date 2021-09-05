@@ -36,9 +36,8 @@ function HomePage(props) {
     return (
         <>
             <h1 className={styles.title}>{homePageTitle[language]}</h1>
-            <Card >
+            <Card themeSelector={weatherContext.theme} >
                 <h3 className={styles.subTitle}>{city}</h3>
-
                 {
                     list.map((item, idx) => {
                         return (
@@ -49,6 +48,7 @@ function HomePage(props) {
                                 icon={item.icon}
                                 description={item.description}
                                 temperature={item.temperature}
+                                themeSelector={weatherContext.theme}
                             />
                         )
                     })
