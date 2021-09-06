@@ -28,7 +28,8 @@ a:link {
     min-height: 3rem;
     position: sticky;
     top: 0;
-    background-color: rgba(40, 41, 61, 0.4);
+    background-color: rgb(40, 41, 61);
+    box-shadow: 0 1px 2px black;
     color: white;
     display: flex;
     align-items: center;
@@ -36,7 +37,8 @@ a:link {
 }
 
 .headerLightTheme {
-    background-color: rgba(255, 252, 247, 0.4);
+    background-color: rgb(255, 252, 247);
+    box-shadow: 0 1px 2px lightgray;
     color: #212428;
     transition: ease-in 0.2s;
 }

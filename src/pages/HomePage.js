@@ -36,13 +36,6 @@ function HomePage(props) {
                 setList(listData);
             });
     }, [setCity, setList, setApiCallCondition, language, unitSystem, apiCallCondition]);
-
-    // useEffect(() => {
-    //     console.log(list);
-    //     console.log(city);
-    //     console.log(languaje);
-    // }, [list, city, languaje])
-
     return (
         <>
             <h1 className={styles.title}>{homePageTitle[language]}</h1>

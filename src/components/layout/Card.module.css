@@ -5,6 +5,7 @@
     height: auto;
     border-radius: 10px;
     background-color: rgb(40, 41, 61);
+    box-shadow: 1px 1px 2px black;
     color: white;
     display: flex;
     align-content: center;
@@ -18,5 +19,6 @@
 .cardLightTheme {
     background-color: rgb(255, 252, 247);
     color: #212428;
+    box-shadow: 1px 1px 2px lightgray;
     transition: ease-in 0.2s;
 }
