@@ -1,6 +1,7 @@
 // import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { useContext, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import WeatherContext from '../../store/WheaterContext';
 import MenuButton from '../menu/MenuButton';
 import NavLinks from '../menu/NavLinks';
@@ -18,9 +19,9 @@ function NavBar(props) {
     return (
         <header className={headerClasses}>
             <div className={logoClasses}>
-                {/* <NavLink to='/'> */}
-                WeatherApp
-                {/* </NavLink> */}
+                <NavLink to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
+                    WeatherApp
+                </NavLink>
             </div>
             <NavLinks isOpen={isMenuOpen} themeSelector={weatherContext.theme} />
             <MenuButton isOpen={isMenuOpen} handleClick={handleIsOpen} />

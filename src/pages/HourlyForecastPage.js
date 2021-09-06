@@ -1,7 +1,7 @@
 function HourlyForecastPage(props) {
     return (
         <>
-            <h1>Forecast</h1>
+            <h1>Hourly</h1>
         </>
     );
 }

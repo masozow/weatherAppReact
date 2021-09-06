@@ -5,6 +5,7 @@ import styles from './HomePage.module.css';
 import { Clean5DaysForecastData } from "../functionality/DataPrepare";
 import { homePageTitle } from "../functionality/LocaleStrings";
 import WeatherContext from "../store/WheaterContext";
+import { NavLink } from "react-router-dom";
 
 function HomePage(props) {
     const [city, setCity] = useState('');
@@ -15,15 +16,14 @@ function HomePage(props) {
 
     const language = weatherContext.languaje;
     const unitSystem = weatherContext.unitSystem;
-
     useEffect(() => {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((position) => {
                 setApiCallCondition(`lat=${position.coords.latitude}&lon=${position.coords.longitude}`);
-                console.log(position);
-                console.log(apiCallCondition);
             });
         }
+    }, [])
+    useEffect(() => {
         //ny: 5128581
         //quet: 3590979
         fetch(`https://api.openweathermap.org/data/2.5/forecast?${apiCallCondition}&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${unitSystem}&lang=${language}`)
@@ -51,15 +51,26 @@ function HomePage(props) {
                 {
                     list.map((item, idx) => {
                         return (
-                            <DailyWeather
+                            <NavLink
                                 key={idx}
-                                weekDay={item.weekDay}
-                                dateTime={item.dateTime}
-                                icon={item.icon}
-                                description={item.description}
-                                temperature={item.temperature}
-                                themeSelector={weatherContext.theme}
-                            />
+                                to={{
+                                    pathname: "/hourlyForecast",
+                                    aboutProps: {
+                                        days: item.weekDay
+                                    }
+
+                                }}
+                                style={{ textDecoration: 'none', color: 'inherit' }}
+                            >
+                                <DailyWeather
+                                    weekDay={item.weekDay}
+                                    dateTime={item.dateTime}
+                                    icon={item.icon}
+                                    description={item.description}
+                                    temperature={item.temperature}
+                                    themeSelector={weatherContext.theme}
+                                />
+                            </NavLink>
                         )
                     })
                 }
