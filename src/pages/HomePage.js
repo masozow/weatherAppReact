@@ -42,17 +42,12 @@ function HomePage(props) {
             <Card themeSelector={weatherContext.theme} >
                 <h3 className={styles.subTitle}>{city}</h3>
                 {
+
                     list.map((item, idx) => {
                         return (
                             <NavLink
                                 key={idx}
-                                to={{
-                                    pathname: "/hourlyForecast",
-                                    aboutProps: {
-                                        days: item.weekDay
-                                    }
-
-                                }}
+                                to={`/hourlyForecast/${item.dateTimeOriginal}`}
                                 style={{ textDecoration: 'none', color: 'inherit' }}
                             >
                                 <DailyWeather
@@ -67,7 +62,6 @@ function HomePage(props) {
                         )
                     })
                 }
-
             </Card>
         </>
     );

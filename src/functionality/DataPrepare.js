@@ -35,6 +35,7 @@ export function Clean5DaysForecastData(data, lang = 'en', unitSystem = unitSyste
         singleData['dateTime'] = formattedDateTime(data.list[index].dt * 1000, lang);
         singleData['weekDay'] = firstCharToUpper(weekDay(data.list[index].dt * 1000, lang));
         singleData['icon'] = data.list[index].weather[0].icon;
+        singleData['dateTimeOriginal'] = (new Date(data.list[index].dt * 1000)).toDateString();
         filteredList.push(singleData);
     }
     //This part costs more computing time 

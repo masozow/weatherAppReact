@@ -11,7 +11,7 @@ function App() {
         <Route path='/hourlyForecast/:day'>
           <HourlyForecastPage />
         </Route>
-        <Route path='/'>
+        <Route path='/' exact>
           <HomePage />
         </Route>
       </Switch>
