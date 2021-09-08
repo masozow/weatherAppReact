@@ -3,17 +3,18 @@ import { createContext, useState } from "react";
 const WeatherContext = createContext(
     {
         unitSystem: 'imperial',
-        languaje: 'en',
+        language: 'en',
         theme: false,
         changeTheme: () => { },
         changeLanguaje: () => { },
-        changeUnitSystem: () => { },
+        changeUnitSystem: () => { }
     }
 );
 export function WeatherContextProvider(props) {
     const [userUnitSystem, setUserUnitSystem] = useState('imperial');
     const [userLanguaje, setUserLanguaje] = useState('en');
     const [userTheme, setUserTheme] = useState(false);
+
 
     function handleSetUnitSystem() {
         if (userUnitSystem === 'imperial')
@@ -34,7 +35,7 @@ export function WeatherContextProvider(props) {
 
     const context = {
         theme: userTheme,
-        languaje: userLanguaje,
+        language: userLanguaje,
         unitSystem: userUnitSystem,
         changeTheme: handleSetTheme,
         changeUnitSystem: handleSetUnitSystem,

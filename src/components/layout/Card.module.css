@@ -12,6 +12,7 @@
     flex-wrap: wrap;
     justify-content: center;
     transition: ease-in 0.2s;
+    margin-bottom: 2rem;
     /* To make padding squish accordiing to screen */
     /* padding-block: min(10vh,10rem); */
 }

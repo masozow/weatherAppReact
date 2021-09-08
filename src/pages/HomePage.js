@@ -2,10 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import DailyWeather from "../components/daily-weather/DailyWeather";
 import Card from "../components/layout/Card";
 import styles from './HomePage.module.css';
-import { Clean5DaysForecastData } from "../functionality/DataPrepare";
 import { homePageTitle } from "../functionality/LocaleStrings";
 import WeatherContext from "../store/WheaterContext";
 import { NavLink } from "react-router-dom";
+import { clean5DaysForecastData } from "../functionality/DataPrepare";
 
 function HomePage(props) {
     const [city, setCity] = useState('');
@@ -14,12 +14,13 @@ function HomePage(props) {
 
     const weatherContext = useContext(WeatherContext);
 
-    const language = weatherContext.languaje;
+    const language = weatherContext.language;
     const unitSystem = weatherContext.unitSystem;
     useEffect(() => {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((position) => {
                 setApiCallCondition(`lat=${position.coords.latitude}&lon=${position.coords.longitude}`);
+                console.log(position.coords)
             });
         }
     }, [])
@@ -31,7 +32,7 @@ function HomePage(props) {
                 return response.json();
             })
             .then((data) => {
-                const [cityData, listData] = Clean5DaysForecastData(data, language, unitSystem);
+                const [cityData, listData] = clean5DaysForecastData(data, language, unitSystem);
                 setCity(cityData);
                 setList(listData);
             });

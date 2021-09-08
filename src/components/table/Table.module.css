@@ -1,0 +1,7 @@
+.tableBody:nth-child(even) {
+    background-color: black;
+}
+
+.table {
+    margin: 1rem 0;
+}
