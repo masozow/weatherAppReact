@@ -1,10 +1,9 @@
-import Card from "../layout/Card";
 import TableRow from "./TableRow";
 import styles from './Table.module.css';
 
 function Table(props) {
     return (
-        <Card>
+        <>
             <table className={styles.table} rules='none'>
                 <thead>
                     <tr>
@@ -35,7 +34,7 @@ function Table(props) {
                     })}
                 </tbody>
             </table>
-        </Card>
+        </>
     );
 }
 

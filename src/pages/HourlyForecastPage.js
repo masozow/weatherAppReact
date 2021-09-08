@@ -2,6 +2,7 @@ import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Card from "../components/layout/Card";
 import Table from "../components/table/Table";
 import { cleanHourlyData, firstCharToUpper, hourlyTitle } from "../functionality/DataPrepare";
 import { monthDay, weekDay } from "../functionality/DateStrings";
@@ -15,7 +16,7 @@ function HourlyForecastPage(props) {
     const params = useParams();
     const actualDate = new Date(params.day);
     useEffect(() => {
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=15.594288299999999&lon=-90.14949879999999&exclude=minutely,alerts&appid=d35ffbb008d9cbfc7bec181cf4685403&units=metric`)
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=15.594288299999999&lon=-90.14949879999999&exclude=minutely,alerts&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${weatherContext.unitSystem}`)
             .then(response => response.json())
             .then(data => {
                 const [sun, hourlyData] = cleanHourlyData(data, params.day, weatherContext.language, weatherContext.unitSystem);
@@ -44,7 +45,9 @@ function HourlyForecastPage(props) {
                 </div>
             </div>
             <div>
-                <Table data={receivedData} />
+                <Card themeSelector={weatherContext.theme}>
+                    <Table data={receivedData} />
+                </Card>
             </div>
         </>
     );
