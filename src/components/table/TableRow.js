@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { iconNameSelection } from "../../functionality/IconNameSelection";
-
+import styles from './TableRow.module.css';
 function TableRow(props) {
     return (
-        <tr>
+        <tr className={styles.row}>
             <td>
                 {props.time}
             </td>

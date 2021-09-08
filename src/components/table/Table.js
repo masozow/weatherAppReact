@@ -5,7 +5,7 @@ import styles from './Table.module.css';
 function Table(props) {
     return (
         <Card>
-            <table className={styles.table}>
+            <table className={styles.table} rules='none'>
                 <thead>
                     <tr>
                         <th>

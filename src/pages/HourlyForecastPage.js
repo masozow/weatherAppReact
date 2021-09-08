@@ -1,3 +1,5 @@
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Table from "../components/table/Table";
@@ -30,10 +32,14 @@ function HourlyForecastPage(props) {
                 <h1>{hourlyTitle(actualDate, weatherContext.language)} </h1>
                 <div className={styles.subTitleRow}>
                     <div>
-                        {`Sunrise: ${sunData.sunrise}`}
+                        <FontAwesomeIcon icon={faSun} style={{ fontSize: '2rem' }} />
+                        &nbsp;
+                        {sunData.sunrise}
                     </div>
                     <div>
-                        {`Sunset: ${sunData.sunset}`}
+                        <FontAwesomeIcon icon={faMoon} style={{ fontSize: '2rem' }} />
+                        &nbsp;
+                        {sunData.sunset}
                     </div>
                 </div>
             </div>
