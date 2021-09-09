@@ -1,36 +1,45 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { iconNameSelection } from "../../functionality/IconNameSelection";
+import { hourlyStrings } from "../../functionality/LocaleStrings";
 import WeatherContext from "../../store/WheaterContext";
 import styles from './TableRow.module.css';
 
 function TableRow(props) {
     const weatherContext = useContext(WeatherContext);
-
+    const strings = hourlyStrings.tableStrings;
+    const language = weatherContext.language;
+    // const rowClassnames = classNames(styles.row, { [styles.rowLightTheme]: !weatherContext.theme })
     return (
-        <tr className={weatherContext.theme ? styles.rowLightTheme : styles.row}>
-            <td>
+        <div className={`${styles.row} ${weatherContext.theme ? styles.rowLightTheme : ''}`}>
+            <div className={styles.hourSection}>
                 {props.time}
-            </td>
-            <td className={styles.contentCell}>
-                <p>Temperature:</p>
-                <p>Feels like:</p>
-                <p>{props.description} </p>
-            </td>
-            <td className={styles.contentCell}>
-                <p>{props.temperature}</p>
-                <p>{props.feelsLike}</p>
-                <p>{<FontAwesomeIcon icon={iconNameSelection(props.icon)} style={{ fontSize: '1rem' }} />}</p>
-            </td>
-            <td className={styles.contentCell}>
-                <p>Humidity:</p>
-                <p>Clouds:</p>
-            </td>
-            <td className={styles.contentCell}>
-                <p> {props.humidity}</p>
-                <p> {props.clouds}</p>
-            </td>
-        </tr>
+            </div>
+            <div className={styles.dataSection}>
+                <div className={styles.column}>
+                    <div className={styles.dataCell}>
+                        <p>{strings[language][0]}:</p>
+                        <p>{strings[language][1]}:</p>
+                        <p>{props.description} </p>
+                    </div>
+                    <div className={styles.dataCell}>
+                        <p>{props.temperature}</p>
+                        <p>{props.feelsLike}</p>
+                        <p>{<FontAwesomeIcon icon={iconNameSelection(props.icon)} style={{ fontSize: '1rem' }} />}</p>
+                    </div>
+                </div>
+                <div className={styles.column}>
+                    <div className={styles.dataCell}>
+                        <p>{strings[language][2]}:</p>
+                        <p>{strings[language][3]}:</p>
+                    </div>
+                    <div className={styles.dataCell}>
+                        <p> {props.humidity}</p>
+                        <p> {props.clouds}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 export default TableRow;

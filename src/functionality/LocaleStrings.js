@@ -18,3 +18,10 @@ export const navBarStrings =
         es: 'Tema'
     }
 }
+
+export const hourlyStrings = {
+    tableStrings: {
+        en: ['Temperature', 'Feels like', 'Humidity', 'Clouds'],
+        es: ['Temperatura', 'Se siente como', 'Humedad', 'Nubes']
+    }
+}
