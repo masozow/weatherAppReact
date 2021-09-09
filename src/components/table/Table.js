@@ -7,13 +7,13 @@ function Table(props) {
             <table className={styles.table} rules='none'>
                 <thead>
                     <tr>
-                        <th>
+                        <th style={{ textAlign: 'left' }}>
                             Hour
                         </th>
-                        <th>
-                            Temperature
+                        <th colSpan='2'>
+                            Wheater data
                         </th>
-                        <th>
+                        {/* <th>
                             Feels Like
                         </th>
                         <th colSpan='2'>
@@ -24,8 +24,7 @@ function Table(props) {
                         </th>
                         <th>
                             Clouds
-                        </th>
-
+                        </th> */}
                     </tr>
                 </thead>
                 <tbody className={styles.tableBody}>
