@@ -18,24 +18,24 @@ function TableRow(props) {
             <div className={styles.dataSection}>
                 <div className={styles.column}>
                     <div className={styles.dataCell}>
-                        <p>{strings[language][0]}:</p>
-                        <p>{strings[language][1]}:</p>
-                        <p>{strings[language][2]}:</p>
+                        <div className={styles.p}>{strings[language][0]}:</div>
+                        <div className={styles.p}>{strings[language][1]}:</div>
+                        <div className={styles.p}>{strings[language][2]}:</div>
                     </div>
                     <div className={styles.dataCell}>
-                        <p>{props.temperature}</p>
-                        <p>{props.feelsLike}</p>
-                        <p>{props.description} {<FontAwesomeIcon icon={iconNameSelection(props.icon)} style={{ fontSize: '1rem' }} />}</p>
+                        <div className={styles.p}>{props.temperature}</div>
+                        <div className={styles.p}>{props.feelsLike}</div>
+                        <div className={styles.p}>{props.description} {<FontAwesomeIcon icon={iconNameSelection(props.icon)} style={{ fontSize: '1rem' }} />}</div>
                     </div>
                 </div>
                 <div className={styles.column}>
                     <div className={styles.dataCell}>
-                        <p>{strings[language][3]}:</p>
-                        <p>{strings[language][4]}:</p>
+                        <div className={styles.p}>{strings[language][3]}:</div>
+                        <div className={styles.p}>{strings[language][4]}:</div>
                     </div>
                     <div className={styles.dataCell}>
-                        <p> {props.humidity}</p>
-                        <p> {props.clouds}</p>
+                        <div className={styles.p}> {props.humidity}</div>
+                        <div className={styles.p}> {props.clouds}</div>
                     </div>
                 </div>
             </div>

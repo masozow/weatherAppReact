@@ -45,9 +45,8 @@
     flex-basis: 50%;
 }
 
-.row p {
-    padding: 0.2rem 0;
-    margin: 0;
+.row .p {
+    margin: 0.2rem 0;
 }
 
 @media screen and (min-width:720px) {
