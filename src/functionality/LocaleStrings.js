@@ -21,7 +21,7 @@ export const navBarStrings =
 
 export const hourlyStrings = {
     tableStrings: {
-        en: ['Temperature', 'Feels like', 'Humidity', 'Clouds'],
-        es: ['Temperatura', 'Se siente como', 'Humedad', 'Nubes']
+        en: ['Temperature', 'Feels like', 'Wheater', 'Humidity', 'Clouds'],
+        es: ['Temperatura', 'Se siente como', 'Clima', 'Humedad', 'Nubosidad']
     }
 }

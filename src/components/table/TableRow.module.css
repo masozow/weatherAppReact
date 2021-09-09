@@ -46,7 +46,7 @@
 }
 
 .row p {
-    padding: 0;
+    padding: 0.2rem 0;
     margin: 0;
 }
 
@@ -58,6 +58,10 @@
 
     .column {
         padding-block: 0;
+    }
+
+    .row p {
+        padding: 0;
     }
 
 }

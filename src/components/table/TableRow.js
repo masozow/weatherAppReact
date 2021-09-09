@@ -20,18 +20,18 @@ function TableRow(props) {
                     <div className={styles.dataCell}>
                         <p>{strings[language][0]}:</p>
                         <p>{strings[language][1]}:</p>
-                        <p>{props.description} </p>
+                        <p>{strings[language][2]}:</p>
                     </div>
                     <div className={styles.dataCell}>
                         <p>{props.temperature}</p>
                         <p>{props.feelsLike}</p>
-                        <p>{<FontAwesomeIcon icon={iconNameSelection(props.icon)} style={{ fontSize: '1rem' }} />}</p>
+                        <p>{props.description} {<FontAwesomeIcon icon={iconNameSelection(props.icon)} style={{ fontSize: '1rem' }} />}</p>
                     </div>
                 </div>
                 <div className={styles.column}>
                     <div className={styles.dataCell}>
-                        <p>{strings[language][2]}:</p>
                         <p>{strings[language][3]}:</p>
+                        <p>{strings[language][4]}:</p>
                     </div>
                     <div className={styles.dataCell}>
                         <p> {props.humidity}</p>
