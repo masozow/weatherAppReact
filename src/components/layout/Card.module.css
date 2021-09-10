@@ -13,7 +13,6 @@
     justify-content: center;
     transition: ease-in 0.2s;
     margin-bottom: 2rem;
-    overflow: hidden;
     /* To make padding squish accordiing to screen */
     /* padding-block: min(10vh,10rem); */
 }
