@@ -41,9 +41,6 @@ function TableRow(props) {
                             <div className={styles.p}>{props.description} {<FontAwesomeIcon icon={iconNameSelection(props.icon)} style={{ fontSize: '1rem' }} />}</div>
                         </div>
                     </div>
-                    {/* <div className={styles.dataCell}>
-
-                    </div> */}
                 </div>
                 <div className={styles.columnSmall}>
                     <div className={styles.dataCell}>

@@ -24,7 +24,7 @@
      padding: 0;
  }
 
- @media screen and (min-width:920px) {
+ @media screen and (min-width:720px) {
      .navBarButtonsContainer {
          display: inline-flex;
          flex-wrap: wrap;

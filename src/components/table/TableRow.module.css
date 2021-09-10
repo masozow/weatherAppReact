@@ -46,31 +46,29 @@
     flex-direction: column;
     justify-items: flex-start;
     align-content: flex-start;
+    flex-shrink: 0;
 }
 
 .dataCell {
     display: flex;
     padding: 0 0 0 0.5rem;
     text-align: left;
-    flex: 1 0 auto;
+    /* flex: 1 0 auto; */
+    flex-shrink: 0;
 }
 
 .row .p {
     margin: 0.2rem 0;
 }
 
-@media screen and (min-width:720px) {
+@media screen and (min-width:800px) {
     .dataSection {
         flex-direction: row;
         margin: 0;
     }
 
-    .column {
-        padding-block: 0;
-    }
-
     .row p {
-        padding: 0;
+        margin: 0;
     }
 
 }

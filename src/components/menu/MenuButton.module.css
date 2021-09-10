@@ -2,7 +2,7 @@
     display: inline;
 }
 
-@media screen and (min-width:920px) {
+@media screen and (min-width:720px) {
     .menuButtonContainer {
         display: none;
     }
