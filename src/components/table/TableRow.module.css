@@ -52,7 +52,7 @@
     display: flex;
     padding: 0 0 0 0.5rem;
     text-align: left;
-    flex-basis: 100%;
+    flex: 1 0 auto;
 }
 
 .row .p {
