@@ -1,5 +1,5 @@
 export function timeString(date, lang = 'en') {
-    return date.toLocaleTimeString('en', { timeStyle: 'short', hourCycle: 'h24' });
+    return date.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit', hourCycle: 'h24' });
 };
 
 export function monthDay(date, lang = 'en') {
