@@ -1,4 +1,4 @@
-.row {
+row {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -73,7 +73,11 @@
     justify-items: flex-start;
     -ms-flex-line-pack: start;
     align-content: flex-start;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
     flex: 0 0 50%;
+    min-height: -webkit-min-content;
+    min-height: -moz-min-content;
     min-height: min-content;
     /* The next line fixes safari on ios problem, but looks horrible in other browsers */
     /* padding-bottom: 1rem; */
