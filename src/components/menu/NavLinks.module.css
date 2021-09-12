@@ -42,7 +42,7 @@
 
  /* The following works, but I wanted a linear gradient border */
  /* .navBarButton:not(:nth-last-of-type(1)) {
-     border-bottom: 1px solid white;
+     border-bottom: 1px solid rgba(255, 252, 247, 0.15);
  } */
 
 
