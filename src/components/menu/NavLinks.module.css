@@ -20,9 +20,31 @@
  }
 
  .navBarButton {
-     margin: 0.5rem 0;
-     padding: 0;
+     padding: 0.5rem 0;
+     margin: 0;
  }
+
+ .navBarButtonBorder {
+
+     height: 1px;
+     width: 100%;
+     padding: 0;
+     margin: 0;
+ }
+
+ .navBarButtonBorderDarkTheme {
+     background: linear-gradient(to right, rgba(255, 252, 247, 0.01), rgba(255, 252, 247, 0.3), rgba(255, 252, 247, 0.01));
+ }
+
+ .navBarButtonBorderLightTheme {
+     background: linear-gradient(to right, rgba(40, 41, 61, 0.01), rgba(40, 41, 61, 0.3), rgba(40, 41, 61, 0.01));
+ }
+
+ /* The following works, but I wanted a linear gradient border */
+ /* .navBarButton:not(:nth-last-of-type(1)) {
+     border-bottom: 1px solid white;
+ } */
+
 
  @media screen and (min-width:720px) {
      .navBarButtonsContainer {
@@ -33,5 +55,9 @@
      .navBarButton {
          margin: 0;
          padding: 0;
+     }
+
+     .navBarButtonBorder {
+         display: none;
      }
  }

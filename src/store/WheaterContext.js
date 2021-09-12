@@ -6,13 +6,13 @@ const WeatherContext = createContext(
         language: 'en',
         theme: false,
         changeTheme: () => { },
-        changeLanguaje: () => { },
+        changeLanguage: () => { },
         changeUnitSystem: () => { }
     }
 );
 export function WeatherContextProvider(props) {
     const [userUnitSystem, setUserUnitSystem] = useState('imperial');
-    const [userLanguaje, setUserLanguaje] = useState('en');
+    const [userLanguage, setUserLanguage] = useState('en');
     const [userTheme, setUserTheme] = useState(false);
 
     function handleSetUnitSystem() {
@@ -22,11 +22,11 @@ export function WeatherContextProvider(props) {
             setUserUnitSystem('imperial');
     }
 
-    function handleSetLanguaje() {
-        if (userLanguaje === 'en')
-            setUserLanguaje('es');
+    function handleSetLanguage() {
+        if (userLanguage === 'en')
+            setUserLanguage('es');
         else
-            setUserLanguaje('en');
+            setUserLanguage('en');
     }
 
     function handleSetTheme() {
@@ -35,11 +35,11 @@ export function WeatherContextProvider(props) {
 
     const context = {
         theme: userTheme,
-        language: userLanguaje,
+        language: userLanguage,
         unitSystem: userUnitSystem,
         changeTheme: handleSetTheme,
         changeUnitSystem: handleSetUnitSystem,
-        changeLanguaje: handleSetLanguaje
+        changeLanguage: handleSetLanguage
     }
 
     return (
