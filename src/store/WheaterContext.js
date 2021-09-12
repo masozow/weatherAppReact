@@ -15,7 +15,6 @@ export function WeatherContextProvider(props) {
     const [userLanguaje, setUserLanguaje] = useState('en');
     const [userTheme, setUserTheme] = useState(false);
 
-
     function handleSetUnitSystem() {
         if (userUnitSystem === 'imperial')
             setUserUnitSystem('metric');
@@ -29,6 +28,7 @@ export function WeatherContextProvider(props) {
         else
             setUserLanguaje('en');
     }
+
     function handleSetTheme() {
         setUserTheme(!userTheme);
     }
@@ -39,7 +39,7 @@ export function WeatherContextProvider(props) {
         unitSystem: userUnitSystem,
         changeTheme: handleSetTheme,
         changeUnitSystem: handleSetUnitSystem,
-        changeLanguaje: handleSetLanguaje,
+        changeLanguaje: handleSetLanguaje
     }
 
     return (

@@ -8,7 +8,7 @@ function App() {
   return (
     <Layout>
       <Switch>
-        <Route path='/hourlyForecast/:day'>
+        <Route path='/hourlyForecast/:day/:coords'>
           <HourlyForecastPage />
         </Route>
         <Route path='/' exact>

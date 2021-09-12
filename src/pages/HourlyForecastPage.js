@@ -14,15 +14,16 @@ function HourlyForecastPage(props) {
     const [receivedData, setReceivedData] = useState([]);
     const params = useParams();
     const actualDate = new Date(params.day);
+
     useEffect(() => {
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=15.594288299999999&lon=-90.14949879999999&exclude=minutely,alerts&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${weatherContext.unitSystem}&lang=${weatherContext.language}`)
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?${params.coords}&exclude=minutely,alerts&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${weatherContext.unitSystem}&lang=${weatherContext.language}`)
             .then(response => response.json())
             .then(data => {
                 const [sun, hourlyData] = cleanHourlyData(data, params.day, weatherContext.language, weatherContext.unitSystem);
                 setSunData(sun);
                 setReceivedData(hourlyData);
             });
-    }, [weatherContext.language, weatherContext.unitSystem, params.day])
+    }, [weatherContext.language, weatherContext.unitSystem, params.day, params.coords])
     return (
         <>
             <div >

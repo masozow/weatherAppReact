@@ -20,10 +20,10 @@ function HomePage(props) {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((position) => {
                 setApiCallCondition(`lat=${position.coords.latitude}&lon=${position.coords.longitude}`);
-                console.log(position.coords)
             });
         }
     }, [])
+
     useEffect(() => {
         //ny: 5128581
         //quet: 3590979
@@ -48,7 +48,7 @@ function HomePage(props) {
                         return (
                             <NavLink
                                 key={idx}
-                                to={`/hourlyForecast/${item.dateTimeOriginal}`}
+                                to={`/hourlyForecast/${item.dateTimeOriginal}/${apiCallCondition}`}
                                 style={{ textDecoration: 'none', color: 'inherit' }}
                             >
                                 <DailyWeather
