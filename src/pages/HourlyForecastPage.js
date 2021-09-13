@@ -12,6 +12,7 @@ function HourlyForecastPage(props) {
     const weatherContext = useContext(WeatherContext);
     const [sunData, setSunData] = useState({});
     const [receivedData, setReceivedData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const params = useParams();
     const actualDate = new Date(params.day);
 
@@ -22,11 +23,12 @@ function HourlyForecastPage(props) {
                 const [sun, hourlyData] = cleanHourlyData(data, params.day, weatherContext.language, weatherContext.unitSystem);
                 setSunData(sun);
                 setReceivedData(hourlyData);
+                setIsLoading(false);
             });
     }, [weatherContext.language, weatherContext.unitSystem, params.day, params.coords])
-    return (
+    const content =
         <>
-            <div >
+            <div>
                 <h1>{hourlyTitle(actualDate, weatherContext.language)} </h1>
                 <div className={styles.subTitleRow}>
                     <div>
@@ -46,6 +48,10 @@ function HourlyForecastPage(props) {
                     <Table data={receivedData} />
                 </Card>
             </div>
+        </>;
+    return (
+        <>
+            {isLoading ? <div className={styles.loading}>Loading...</div> : content}
         </>
     );
 }
