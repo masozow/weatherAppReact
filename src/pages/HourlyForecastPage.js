@@ -7,6 +7,7 @@ import Table from "../components/table/Table";
 import { cleanHourlyData, hourlyTitle } from "../functionality/DataPrepare";
 import WeatherContext from "../store/WheaterContext";
 import styles from './HourlyForecastPage.module.css';
+import { alternativeMessages } from '../functionality/LocaleStrings';
 
 function HourlyForecastPage(props) {
     const weatherContext = useContext(WeatherContext);
@@ -51,7 +52,7 @@ function HourlyForecastPage(props) {
         </>;
     return (
         <>
-            {isLoading ? <div className={styles.loading}>Loading...</div> : content}
+            {isLoading ? <div className={styles.loading}>{alternativeMessages.loading[weatherContext.language]}...</div> : content}
         </>
     );
 }

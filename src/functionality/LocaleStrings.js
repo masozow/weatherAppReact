@@ -25,3 +25,10 @@ export const hourlyStrings = {
         es: ['Temperatura', 'Se siente como', 'Clima', 'Humedad', 'Nubosidad']
     }
 }
+
+export const alternativeMessages = {
+    loading: {
+        en: 'Loading',
+        es: 'Cargando'
+    }
+}
