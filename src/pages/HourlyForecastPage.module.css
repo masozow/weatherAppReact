@@ -5,7 +5,11 @@
 }
 
 .loading {
-    font-size: 5rem;
-    font-weight: 300;
+    font-size: 4rem;
+    font-weight: 100;
     margin: 30vh auto;
+}
+
+h1 {
+    font-weight: 300;
 }

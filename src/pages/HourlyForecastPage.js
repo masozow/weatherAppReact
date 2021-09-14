@@ -27,7 +27,10 @@ function HourlyForecastPage(props) {
                 setIsLoading(false);
             });
     }, [weatherContext.language, weatherContext.unitSystem, params.day, params.coords])
-    const content =
+
+    const content = receivedData.length === 0 && !isLoading ?
+        <div className={styles.loading}>{alternativeMessages.unavailableData[weatherContext.language]}</div>
+        :
         <>
             <div>
                 <h1>{hourlyTitle(actualDate, weatherContext.language)} </h1>
@@ -50,9 +53,10 @@ function HourlyForecastPage(props) {
                 </Card>
             </div>
         </>;
+    const alternative = <div className={styles.loading}>{alternativeMessages.loading[weatherContext.language]}...</div>;
     return (
         <>
-            {isLoading ? <div className={styles.loading}>{alternativeMessages.loading[weatherContext.language]}...</div> : content}
+            {isLoading ? alternative : content}
         </>
     );
 }

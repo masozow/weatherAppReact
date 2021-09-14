@@ -30,5 +30,9 @@ export const alternativeMessages = {
     loading: {
         en: 'Loading',
         es: 'Cargando'
+    },
+    unavailableData: {
+        en: 'Due to the usage of Open Weather Map API free tier, this data is currently unavailable.',
+        es: 'Debido al uso del plan gratuito de la API de Open Weather Map, estos datos no están disponibles actualmente.'
     }
 }

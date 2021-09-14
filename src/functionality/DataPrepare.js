@@ -25,6 +25,8 @@ function formattedCity(data = '') {
 }
 
 export function clean5DaysForecastData(data, lang = 'en', unitSystem = unitSystems['metric']) {
+    if (typeof (data) === undefined)
+        return ['', []];
     const city = formattedCity(data.city);
     const dataLength = data.list.length;
     const filteredList = [];
@@ -43,9 +45,17 @@ export function clean5DaysForecastData(data, lang = 'en', unitSystem = unitSyste
     //     return index % 8 === 0;
     // });
     return [city, filteredList];
+
 }
 
 export function cleanHourlyData(data = [], comparingDateString = '', lang = 'en', unitSystem = 'imperial') {
+    if (data.length === 0)
+        return [
+            {
+                sunrise: '',
+                sunset: ''
+            }, []
+        ];
     const len = data.hourly.length;
     const filteredData = [];
     for (let index = 0; index < len; index++) {
@@ -70,7 +80,6 @@ export function cleanHourlyData(data = [], comparingDateString = '', lang = 'en'
             sunrise: (new Date(data.current.sunrise * 1000)).toLocaleTimeString(),
             sunset: (new Date(data.current.sunset * 1000)).toLocaleTimeString()
         }, filteredData];
-
 }
 
 export function hourlyTitle(date = '', lan = 'en') {
