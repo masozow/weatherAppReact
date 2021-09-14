@@ -1,10 +1,11 @@
-import { faSun, faCloudSun, faCloud, faCloudRain, faCloudSunRain, faCloudMoonRain, faPooStorm, faSnowflake, faSmog, faRainbow, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faSun, faCloudSun, faCloud, faCloudRain, faCloudSunRain, faCloudMoonRain, faPooStorm, faSnowflake, faSmog, faRainbow, faMoon, faCloudMoon } from "@fortawesome/free-solid-svg-icons";
 ///iconRelations keys according to openweather API available icons, and values
 ///according to  available icons in fontawesome free package
 const iconRelations = {
     '01d': faSun,
     '01n': faMoon,
     '02d': faCloudSun,
+    '02n': faCloudMoon,
     '03d': faCloud,
     '03n': faCloud,
     '04d': faCloud,
