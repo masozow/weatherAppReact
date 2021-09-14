@@ -24,7 +24,7 @@ a:link {
 }
 
 .header {
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     min-height: 3rem;
     position: sticky;
     top: 0;

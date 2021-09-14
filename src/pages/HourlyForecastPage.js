@@ -8,6 +8,7 @@ import { cleanHourlyData, hourlyTitle } from "../functionality/DataPrepare";
 import WeatherContext from "../store/WheaterContext";
 import styles from './HourlyForecastPage.module.css';
 import { alternativeMessages } from '../functionality/LocaleStrings';
+import { APIKey } from '../functionality/APIKey';
 
 function HourlyForecastPage(props) {
     const weatherContext = useContext(WeatherContext);
@@ -18,7 +19,7 @@ function HourlyForecastPage(props) {
     const actualDate = new Date(params.day);
 
     useEffect(() => {
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?${params.coords}&exclude=minutely,alerts&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${weatherContext.unitSystem}&lang=${weatherContext.language}`)
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?${params.coords}&exclude=minutely,alerts&appid=${APIKey}&units=${weatherContext.unitSystem}&lang=${weatherContext.language}`)
             .then(response => response.json())
             .then(data => {
                 const [sun, hourlyData] = cleanHourlyData(data, params.day, weatherContext.language, weatherContext.unitSystem);

@@ -6,6 +6,7 @@ import { homePageTitle } from "../functionality/LocaleStrings";
 import WeatherContext from "../store/WheaterContext";
 import { NavLink } from "react-router-dom";
 import { clean5DaysForecastData } from "../functionality/DataPrepare";
+import { APIKey } from '../functionality/APIKey';
 
 function HomePage(props) {
     const [city, setCity] = useState('');
@@ -27,7 +28,7 @@ function HomePage(props) {
     useEffect(() => {
         //ny: 5128581
         //quet: 3590979
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?${apiCallCondition}&appid=d35ffbb008d9cbfc7bec181cf4685403&units=${unitSystem}&lang=${language}`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?${apiCallCondition}&appid=${APIKey}&units=${unitSystem}&lang=${language}`)
             .then((response) => {
                 return response.json();
             })
