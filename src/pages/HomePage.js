@@ -24,10 +24,13 @@ function HomePage(props) {
             });
         }
     }, [])
+    useEffect(() => {
 
+    }, []);
     useEffect(() => {
         //ny: 5128581
         //quet: 3590979
+
         fetch(`https://api.openweathermap.org/data/2.5/forecast?${apiCallCondition}&appid=${APIKey}&units=${unitSystem}&lang=${language}`)
             .then((response) => {
                 return response.json();
@@ -36,8 +39,18 @@ function HomePage(props) {
                 const [cityData, listData] = clean5DaysForecastData(data, language, unitSystem);
                 setCity(cityData);
                 setList(listData);
-            });
+                console.log('data changed: ', new Date());
+            })
+
+        // const interval= setInterval(
+
+        //     , 60000);
+        //     return () => {
+        //         clearInterval()
+        //     }
+        // interval();
     }, [setCity, setList, setApiCallCondition, language, unitSystem, apiCallCondition]);
+
     return (
         <>
             <h1 className={styles.title}>{homePageTitle[language]}</h1>
