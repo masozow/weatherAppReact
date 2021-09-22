@@ -29,26 +29,24 @@ function HomePage(props) {
     }, []);
     useEffect(() => {
         //ny: 5128581
-        //quet: 3590979
+        //quet: 3590979       
+        const interval = setInterval(() => {
+            fetch(`https://api.openweathermap.org/data/2.5/forecast?${apiCallCondition}&appid=${APIKey}&units=${unitSystem}&lang=${language}`)
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    const [cityData, listData] = clean5DaysForecastData(data, language, unitSystem);
+                    setCity(cityData);
+                    setList(listData);
+                    console.log('data changed: ', new Date());
+                })
+        }
+            , 600000);
 
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?${apiCallCondition}&appid=${APIKey}&units=${unitSystem}&lang=${language}`)
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                const [cityData, listData] = clean5DaysForecastData(data, language, unitSystem);
-                setCity(cityData);
-                setList(listData);
-                console.log('data changed: ', new Date());
-            })
-
-        // const interval= setInterval(
-
-        //     , 60000);
-        //     return () => {
-        //         clearInterval()
-        //     }
-        // interval();
+        return () => {
+            clearInterval(interval);
+        }
     }, [setCity, setList, setApiCallCondition, language, unitSystem, apiCallCondition]);
 
     return (
