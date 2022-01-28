@@ -29,7 +29,7 @@ function HourlyForecastPage(props) {
                 setReceivedData(hourlyData);
                 setIsLoading(false);
             });
-    }, [weatherContext.language, weatherContext.unitSystem, params.day, params.coords])
+    }, [weatherContext.language, params, weatherContext.unitSystem])
 
     const content = receivedData.length === 0 && !isLoading ?
         <div className={styles.loading}>{alternativeMessages.unavailableData[weatherContext.language]}</div>
