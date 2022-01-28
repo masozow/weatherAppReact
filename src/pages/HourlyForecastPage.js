@@ -22,6 +22,8 @@ function HourlyForecastPage(props) {
         fetch(`https://api.openweathermap.org/data/2.5/onecall?${params.coords}&exclude=minutely,alerts&appid=${APIKey}&units=${weatherContext.unitSystem}&lang=${weatherContext.language}`)
             .then(response => response.json())
             .then(data => {
+                console.log(params);
+                console.log(data);
                 const [sun, hourlyData] = cleanHourlyData(data, params.day, weatherContext.language, weatherContext.unitSystem);
                 setSunData(sun);
                 setReceivedData(hourlyData);

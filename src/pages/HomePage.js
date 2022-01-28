@@ -11,8 +11,9 @@ import { APIKey } from '../functionality/APIKey';
 function HomePage(props) {
     const [city, setCity] = useState('');
     const [list, setList] = useState([]);
-    const [apiCallCondition, setApiCallCondition] = useState('id=5128581');
-
+    const [apiCallCondition, setApiCallCondition] = useState('lat=40.776676&lon=-73.971321');
+    //you can use the ID from the city in apiCallCondition, but only for the forecast call to the API,
+    //for the OneCall call, latitude and longitude are needed
     const weatherContext = useContext(WeatherContext);
 
     const language = weatherContext.language;
@@ -30,23 +31,23 @@ function HomePage(props) {
     useEffect(() => {
         //ny: 5128581
         //quet: 3590979       
-        const interval = setInterval(() => {
-            fetch(`https://api.openweathermap.org/data/2.5/forecast?${apiCallCondition}&appid=${APIKey}&units=${unitSystem}&lang=${language}`)
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    const [cityData, listData] = clean5DaysForecastData(data, language, unitSystem);
-                    setCity(cityData);
-                    setList(listData);
-                    console.log('data changed: ', new Date());
-                })
-        }
-            , 600000);
+        // const interval = setInterval(() => {
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?${apiCallCondition}&appid=${APIKey}&units=${unitSystem}&lang=${language}`)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                const [cityData, listData] = clean5DaysForecastData(data, language, unitSystem);
+                setCity(cityData);
+                setList(listData);
+                // console.log('data changed: ', new Date());
+            })
+        // }
+        //     , 600000);
 
-        return () => {
-            clearInterval(interval);
-        }
+        // return () => {
+        //     clearInterval(interval);
+        // }
     }, [setCity, setList, setApiCallCondition, language, unitSystem, apiCallCondition]);
 
     return (
