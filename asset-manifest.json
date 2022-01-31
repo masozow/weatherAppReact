@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/weatherAppReact/static/css/main.493c2139.chunk.css",
-    "main.js": "/weatherAppReact/static/js/main.2a2bb188.chunk.js",
-    "main.js.map": "/weatherAppReact/static/js/main.2a2bb188.chunk.js.map",
+    "main.js": "/weatherAppReact/static/js/main.ef560f2e.chunk.js",
+    "main.js.map": "/weatherAppReact/static/js/main.ef560f2e.chunk.js.map",
     "runtime-main.js": "/weatherAppReact/static/js/runtime-main.79fe62da.js",
     "runtime-main.js.map": "/weatherAppReact/static/js/runtime-main.79fe62da.js.map",
     "static/js/2.1178c928.chunk.js": "/weatherAppReact/static/js/2.1178c928.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.79fe62da.js",
     "static/js/2.1178c928.chunk.js",
     "static/css/main.493c2139.chunk.css",
-    "static/js/main.2a2bb188.chunk.js"
+    "static/js/main.ef560f2e.chunk.js"
   ]
 }
