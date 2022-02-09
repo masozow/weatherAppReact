@@ -12,22 +12,33 @@ function HomePage(props) {
     const [city, setCity] = useState('');
     const [list, setList] = useState([]);
     const [apiCallCondition, setApiCallCondition] = useState('lat=40.776676&lon=-73.971321');
-    //you can use the ID from the city in apiCallCondition, but only for the forecast call to the API,
-    //for the OneCall call, latitude and longitude are needed
+    //you can use the ID from the city in apiCallCondition, but only for the Forecast call to the API,
+    //for the OneCall call, latitude and longitude are needed, and the Forecast call accepts that data too
     const weatherContext = useContext(WeatherContext);
 
     const language = weatherContext.language;
     const unitSystem = weatherContext.unitSystem;
+
     useEffect(() => {
         if ("geolocation" in navigator) {
+            //trying to solve geolocation problem with options
+            const options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
             navigator.geolocation.getCurrentPosition((position) => {
                 setApiCallCondition(`lat=${position.coords.latitude}&lon=${position.coords.longitude}`);
-            });
+                console.log(position);
+            }, (error) => {
+                // alert('location services unavailable');
+                console.log(error)
+            },
+                options);
         }
-    }, [])
-    useEffect(() => {
+        console.log(navigator.geolocation)
+    }, [setApiCallCondition])
 
-    }, []);
     useEffect(() => {
         //ny: 5128581
         //quet: 3590979       
@@ -48,7 +59,7 @@ function HomePage(props) {
         // return () => {
         //     clearInterval(interval);
         // }
-    }, [setCity, setList, setApiCallCondition, language, unitSystem, apiCallCondition]);
+    }, [setCity, setList, language, unitSystem, apiCallCondition]);
 
     return (
         <>
