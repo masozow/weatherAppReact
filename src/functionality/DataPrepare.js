@@ -87,3 +87,4 @@ export function hourlyTitle(date = '', lan = 'en') {
     const weekDayName = firstCharToUpper(weekDay(date, lan));
     return `${weekDayName}, ${monthDayName}`;
 }
+

@@ -53,6 +53,7 @@ function HomePage(props) {
                 setList(listData);
                 // console.log('data changed: ', new Date());
             })
+
         // }
         //     , 600000);
 

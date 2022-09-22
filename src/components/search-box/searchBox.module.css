@@ -1,0 +1,28 @@
+.searchBox {
+    padding: 0 1rem;
+}
+
+
+.searchIcon:hover {
+    filter: drop-shadow(0px 0px 3px white);
+}
+
+.textBox {
+    background: transparent;
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: gray;
+    color: white;
+    caret-color: white;
+    width: 0px;
+    display: none;
+}
+
+.textBox_open {
+    display: inline-block !important;
+    width: auto !important;
+}
+
+.textBox:focus {
+    border-color: white;
+}
