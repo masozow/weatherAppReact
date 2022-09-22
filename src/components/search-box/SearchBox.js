@@ -47,7 +47,7 @@ function SearchBox(props) {
 
     return (
         <form className={styles.searchBox} onSubmit={handleSubmit} onBlur={hideTextBoxHandler}>
-            <SearchTextBox textBoxIsVisible={textBoxIsShown} ref={searchQueryRef} />
+            <SearchTextBox autoFocus textBoxIsVisible={textBoxIsShown} ref={searchQueryRef} />
             <SearchIcon showTextBox={showTextBoxHandler} handleClick={handleSubmit} />
             <Modal isModalVisible={modalIsShown} data={userData} />
             <Backdrop isBackdropVisible={modalIsShown} isBackdropVisibleHandler={hideModalBackdropHandler} />
