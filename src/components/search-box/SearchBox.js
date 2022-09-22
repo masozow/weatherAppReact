@@ -25,30 +25,26 @@ function SearchBox(props) {
         setModalIsShown(false);
         console.log('backdrop has been clicked');
     }
+
     function handleSubmit(event) {
         event.preventDefault();
-        console.log('submitted form');
-        if (textBoxIsShown) {
-            const searchQuery = searchQueryRef.current.value;
+        const searchQuery = searchQueryRef.current.value;
+        if (textBoxIsShown && searchQuery.trim().length !== 0) {
             console.log('searching for: ', searchQuery);
             fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchQuery}&limit=10&appid=${APIKey}`)
                 .then((response) => {
                     return response.json();
                 }).then((data) => {
+                    if (data.length === 1) {
+                        return;
+                    }
                     setUserData(data);
                     setModalIsShown(true);
                     console.log(data);
-                    if (data.length === 1) {
-                        console.log('uno');
-                    }
                 });
         }
     }
 
-    //TO DO:
-    //If textbox is visible, and search icon is clicked, submit form
-    //Focus on textbox when hover on search icon
-    //
     return (
         <form className={styles.searchBox} onSubmit={handleSubmit} onBlur={hideTextBoxHandler}>
             <SearchTextBox textBoxIsVisible={textBoxIsShown} ref={searchQueryRef} />

@@ -29,6 +29,10 @@ li:hover {
     background-color: rgba(15, 15, 15, 0.5);
 }
 
+li:hover:first {
+    border-radius: inherit;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
