@@ -5,15 +5,21 @@ const WeatherContext = createContext(
         unitSystem: 'imperial',
         language: 'en',
         theme: false,
+        apiCallCondition: 'lat=40.776676&lon=-73.971321',
+        overrideGeolocation: false,
         changeTheme: () => { },
         changeLanguage: () => { },
-        changeUnitSystem: () => { }
+        changeUnitSystem: () => { },
+        changeApiCallCondition: () => { },
+        changeOverrideGeolocation: () => { }
     }
 );
 export function WeatherContextProvider(props) {
     const [userUnitSystem, setUserUnitSystem] = useState('imperial');
     const [userLanguage, setUserLanguage] = useState('en');
     const [userTheme, setUserTheme] = useState(false);
+    const [userApiCallCondition, setUserApiCallCondition] = useState('lat=40.776676&lon=-73.971321')
+    const [userOverrideGeolocation, setUserOverrideGeolocation] = useState(false);
 
     function handleSetUnitSystem() {
         if (userUnitSystem === 'imperial')
@@ -33,13 +39,20 @@ export function WeatherContextProvider(props) {
         setUserTheme(!userTheme);
     }
 
+    function handleSetApiCallCondition(data) {
+        setUserApiCallCondition(data);
+        setUserOverrideGeolocation(true);
+    }
     const context = {
         theme: userTheme,
         language: userLanguage,
         unitSystem: userUnitSystem,
+        apiCallCondition: userApiCallCondition,
+        overrideGeolocation: userOverrideGeolocation,
         changeTheme: handleSetTheme,
         changeUnitSystem: handleSetUnitSystem,
-        changeLanguage: handleSetLanguage
+        changeLanguage: handleSetLanguage,
+        changeApiCallCondition: handleSetApiCallCondition
     }
 
     return (

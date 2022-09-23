@@ -6,8 +6,8 @@ import { useContext } from "react";
 
 function Modal(props) {
     //the next line needs some work
-    const showModal = props.data.length > 1 ? props.isModalVisible : false;
-    const modalStyles = classNames(styles.modal, { [styles.active]: showModal });
+    // const showModal = props.data.length > 1 ? props.isModalVisible : false;
+    const modalStyles = classNames(styles.modal, { [styles.active]: props.isModalVisible });
     const weatherContext = useContext(WeatherContext);
 
     return (

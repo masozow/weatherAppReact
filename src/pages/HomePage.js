@@ -11,7 +11,7 @@ import { APIKey } from '../functionality/APIKey';
 function HomePage(props) {
     const [city, setCity] = useState('');
     const [list, setList] = useState([]);
-    const [apiCallCondition, setApiCallCondition] = useState('lat=40.776676&lon=-73.971321');
+    // const [apiCallCondition, setApiCallCondition] = useState('lat=40.776676&lon=-73.971321');
     //you can use the ID from the city in apiCallCondition, but only for the Forecast call to the API,
     //for the OneCall call, latitude and longitude are needed, and the Forecast call accepts that data too
     const weatherContext = useContext(WeatherContext);
@@ -20,7 +20,7 @@ function HomePage(props) {
     const unitSystem = weatherContext.unitSystem;
 
     useEffect(() => {
-        if ("geolocation" in navigator) {
+        if ("geolocation" in navigator && !weatherContext.overrideGeolocation) {
             //trying to solve geolocation problem with options
             const options = {
                 enableHighAccuracy: true,
@@ -28,7 +28,7 @@ function HomePage(props) {
                 maximumAge: 0
             };
             navigator.geolocation.getCurrentPosition((position) => {
-                setApiCallCondition(`lat=${position.coords.latitude}&lon=${position.coords.longitude}`);
+                weatherContext.changeApiCallCondition(`lat=${position.coords.latitude}&lon=${position.coords.longitude}`);
                 console.log(position);
             }, (error) => {
                 // alert('location services unavailable');
@@ -37,13 +37,13 @@ function HomePage(props) {
                 options);
         }
         console.log(navigator.geolocation)
-    }, [setApiCallCondition])
+    }, [weatherContext])
 
     useEffect(() => {
         //ny: 5128581
         //quet: 3590979       
         // const interval = setInterval(() => {
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?${apiCallCondition}&appid=${APIKey}&units=${unitSystem}&lang=${language}`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?${weatherContext.apiCallCondition}&appid=${APIKey}&units=${unitSystem}&lang=${language}`)
             .then((response) => {
                 return response.json();
             })
@@ -60,7 +60,7 @@ function HomePage(props) {
         // return () => {
         //     clearInterval(interval);
         // }
-    }, [setCity, setList, language, unitSystem, apiCallCondition]);
+    }, [setCity, setList, language, unitSystem, weatherContext]);
 
     return (
         <>
@@ -73,7 +73,7 @@ function HomePage(props) {
                         return (
                             <NavLink
                                 key={idx}
-                                to={`/hourlyForecast/${item.dateTimeOriginal}/${apiCallCondition}`}
+                                to={`/hourlyForecast/${item.dateTimeOriginal}/${weatherContext.apiCallCondition}`}
                                 style={{ textDecoration: 'none', color: 'inherit' }}
                             >
                                 <DailyWeather
