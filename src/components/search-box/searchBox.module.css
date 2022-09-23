@@ -18,6 +18,12 @@
     display: none;
 }
 
+.textBoxLight {
+    border-color: #1C1C27 !important;
+    color: black;
+    caret-color: black;
+}
+
 .textBox_open {
     display: inline-block !important;
     width: auto !important;
