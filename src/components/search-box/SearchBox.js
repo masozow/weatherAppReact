@@ -59,7 +59,7 @@ function SearchBox(props) {
         <form className={styles.searchBox} onSubmit={handleSubmit} onBlur={hideTextBoxHandler}>
             <SearchTextBox autoFocus textBoxIsVisible={textBoxIsShown} ref={searchQueryRef} />
             <SearchIcon showTextBox={showTextBoxHandler} handleClick={handleSubmit} />
-            <Modal isModalVisible={modalIsShown} data={userData} />
+            <Modal isModalVisible={modalIsShown} data={userData} closeModalBackdrophandler={hideModalBackdropHandler} />
             <Backdrop isBackdropVisible={modalIsShown} isBackdropVisibleHandler={hideModalBackdropHandler} />
         </form>
     );

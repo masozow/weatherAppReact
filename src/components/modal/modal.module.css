@@ -23,6 +23,7 @@ ul {
 li {
     margin: 0;
     padding: 1rem;
+    cursor: pointer;
 }
 
 li:hover {
