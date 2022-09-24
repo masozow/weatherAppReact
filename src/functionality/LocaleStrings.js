@@ -34,5 +34,10 @@ export const alternativeMessages = {
     unavailableData: {
         en: 'Due to the usage of Open Weather Map API free tier, this data is currently unavailable.',
         es: 'Debido al uso del plan gratuito de la API de Open Weather Map, estos datos no están disponibles actualmente.'
+    },
+    cityDataUnavailable:
+    {
+        en: 'Try with other city',
+        es: 'Prueba con otra ciudad'
     }
 }

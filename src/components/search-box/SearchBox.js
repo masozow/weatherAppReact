@@ -6,6 +6,7 @@ import { APIKey } from '../../functionality/APIKey';
 import Modal from '../modal/Modal';
 import Backdrop from '../modal/Backdrop';
 import WeatherContext from '../../store/WheaterContext';
+import { alternativeMessages } from '../../functionality/LocaleStrings';
 
 
 function SearchBox(props) {
@@ -48,7 +49,7 @@ function SearchBox(props) {
                             break;
                         case 0:
                             console.log('No records')
-                            setUserData('Try with other city');
+                            setUserData(alternativeMessages.cityDataUnavailable[weatherContext.language]);
                             setModalIsShown(true);
                             break;
                         default:
