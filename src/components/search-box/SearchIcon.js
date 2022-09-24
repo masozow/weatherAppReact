@@ -4,7 +4,8 @@ import styles from './searchBox.module.css';
 
 function SearchIcon(props) {
     return (
-        <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} onMouseEnter={props.showTextBox} onClick={props.handleClick} />
+        <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} onClick={props.handleClick} />
+        // onMouseEnter={props.showTextBox} 
     )
 };
 
