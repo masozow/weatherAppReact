@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import WeatherContext from '../../store/WheaterContext';
 import MenuButton from '../menu/MenuButton';
 import NavLinks from '../menu/NavLinks';
+import Backdrop from '../modal/Backdrop';
 import SearchBox from '../search-box/SearchBox';
 import styles from './NavBar.module.css';
 
@@ -27,6 +28,7 @@ function NavBar(props) {
             <SearchBox />
             <NavLinks isOpen={isMenuOpen} themeSelector={weatherContext.theme} />
             <MenuButton isOpen={isMenuOpen} handleClick={handleIsOpen} />
+            <Backdrop isBackdropVisibleHandler={handleIsOpen} isBackdropVisible={isMenuOpen} />
         </header>
     );
 }
