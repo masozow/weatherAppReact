@@ -12,11 +12,11 @@
 .textBox {
     background: transparent;
     outline: 0;
-    border-width: 0 0 1px;
+    border-width: 0 0 1px 0;
     border-color: gray;
     color: white;
     caret-color: white;
-    width: 0px;
+    width: 0;
     display: none;
 }
 
@@ -28,7 +28,7 @@
 
 .textBox_open {
     display: inline-block !important;
-    width: auto !important;
+    width: 9rem;
 }
 
 .textBox:focus {
