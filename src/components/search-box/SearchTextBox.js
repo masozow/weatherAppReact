@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import styles from './searchBox.module.css';
 import { forwardRef, useContext, useEffect } from 'react';
 import WeatherContext from '../../store/WheaterContext';
-// import { useCallback } from 'react/cjs/react.production.min';
 
 const SearchTextBox = forwardRef((props, ref) => {
 

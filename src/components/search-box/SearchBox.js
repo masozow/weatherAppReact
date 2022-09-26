@@ -36,7 +36,7 @@ function SearchBox(props) {
         const searchQuery = searchQueryRef.current.value;
         if (textBoxIsShown && searchQuery.trim().length !== 0) {
             console.log('searching for: ', searchQuery);
-            fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchQuery}&limit=10&appid=${APIKey}`)
+            fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${searchQuery}&limit=10&appid=${APIKey}`)
                 .then((response) => {
                     return response.json();
                 }).then((data) => {
