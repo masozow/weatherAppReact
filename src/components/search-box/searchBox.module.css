@@ -1,5 +1,7 @@
 .searchBox {
     padding: 0 1rem;
+    display: flex;
+
 }
 
 
