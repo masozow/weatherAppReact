@@ -1,6 +1,7 @@
 .menuButtonContainer {
     display: inline;
     padding: 0.2rem;
+    flex-grow: 1rem;
 }
 
 @media screen and (min-width:720px) {

@@ -20,7 +20,7 @@ function NavBar(props) {
     return (
         <header className={headerClasses}>
             <div className={logoClasses}>
-                <NavLink to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
+                <NavLink to='/' style={{ textDecoration: 'none', color: 'inherit', padding: '0', margin: '0' }}>
                     WeatherApp
                 </NavLink>
             </div>
