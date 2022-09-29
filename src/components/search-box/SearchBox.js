@@ -2,7 +2,7 @@ import styles from './searchBox.module.css';
 import SearchIcon from './SearchIcon';
 import SearchTextBox from './SearchTextBox';
 import { useState, createRef, useContext } from "react";
-import { APIKey } from '../../functionality/APIKey';
+import { OpenCageGeocodingAPIKey } from '../../functionality/APIKey';
 import Modal from '../modal/Modal';
 import Backdrop from '../modal/Backdrop';
 import WeatherContext from '../../store/WheaterContext';
@@ -15,10 +15,6 @@ function SearchBox(props) {
     const [userData, setUserData] = useState([]);
     const searchQueryRef = createRef(); //using createRef instead of useRef
     const weatherContext = useContext(WeatherContext);
-
-    // const showTextBoxHandler = () => {
-    //     setTextBoxIsShown(true);
-    // };
 
     const hideTextBoxHandler = () => {
         if (searchQueryRef.current.value.trim().length === 0)
@@ -36,16 +32,16 @@ function SearchBox(props) {
         const searchQuery = searchQueryRef.current.value;
         if (textBoxIsShown && searchQuery.trim().length !== 0) {
             console.log('searching for: ', searchQuery);
-            fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${searchQuery}&limit=10&appid=${APIKey}`)
+
+            fetch(`https://api.opencagedata.com/geocode/v1/json?q=${searchQuery}&key=${OpenCageGeocodingAPIKey}&language=${weatherContext.language}&pretty=1`)
                 .then((response) => {
                     return response.json();
                 }).then((data) => {
-                    console.log(data);
-                    console.log(typeof (data));
-                    switch (data.length) {
+                    console.log(data.results);
+                    switch (data.results.length) {
                         case 1:
                             console.log('Just 1 record returned');
-                            weatherContext.changeApiCallCondition(`lat=${data[0].lat}&lon=${data[0].lon}`)
+                            weatherContext.changeApiCallCondition(`lat=${data.results[0].geometry.lat}&lon=${data.results[0].geometry.lng}`)
                             break;
                         case 0:
                             console.log('No records')
@@ -53,7 +49,7 @@ function SearchBox(props) {
                             setModalIsShown(true);
                             break;
                         default:
-                            setUserData(data);
+                            setUserData(data.results);
                             setModalIsShown(true);
                             break;
                     }

@@ -12,8 +12,8 @@ function Modal(props) {
     const weatherContext = useContext(WeatherContext);
 
     const itemClickHandler = (event, param = {}) => {
-        if (param.name) {
-            weatherContext.changeApiCallCondition(`lat=${param.lat}&lon=${param.lon}`);
+        if (param.formatted) {
+            weatherContext.changeApiCallCondition(`lat=${param.geometry.lat}&lon=${param.geometry.lng}`);
         }
         props.closeModalBackdrophandler();
     }
@@ -21,16 +21,18 @@ function Modal(props) {
     const formattedData = (data) => {
         if (Array.isArray(data)) {
             return (
-                < ul > {
-                    props.data.map((item, idx) => {
-                        return (
-                            <Li key={idx} handleClick={event => itemClickHandler(event, item)} >
-                                {item.name ? `${item.name}, ${item.state}, ${item.country}` : item}
-                            </Li>
-                        )
-                    })
-                }
-                </ul >
+                <>
+                    < ul > {
+                        props.data.map((item, idx) => {
+                            return (
+                                <Li key={idx} handleClick={event => itemClickHandler(event, item)} >
+                                    {item.formatted ? `${item.formatted}` : item}
+                                </Li>
+                            )
+                        })
+                    }
+                    </ul >
+                </>
             );
         }
         else {
@@ -41,7 +43,6 @@ function Modal(props) {
     }
     return (
         <div className={modalStyles}>
-            {/* classes props is sent to override some original card properties */}
             <Card themeSelector={weatherContext.theme} classes={styles.card} >
                 {
                     formattedData(props.data)

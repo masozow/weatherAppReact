@@ -18,7 +18,7 @@
  }
 
  .navBarButtonsContainerActiveLightTheme {
-     background-color: rgba(255, 252, 247, 0.8);
+     background-color: rgba(255, 252, 247, 0.9);
      transition: ease-in 0.2s;
  }
 
@@ -40,7 +40,7 @@
  }
 
  .navBarButtonBorderLightTheme {
-     background: linear-gradient(to right, rgba(40, 41, 61, 0.01), rgba(40, 41, 61, 0.3), rgba(40, 41, 61, 0.01));
+     background: linear-gradient(to right, rgba(40, 41, 61, 0.4), rgba(40, 41, 61, 0.8), rgba(40, 41, 61, 0.4));
  }
 
  /* The following works, but I wanted a linear gradient border */

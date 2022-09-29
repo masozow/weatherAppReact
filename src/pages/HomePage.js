@@ -7,6 +7,7 @@ import WeatherContext from "../store/WheaterContext";
 import { NavLink } from "react-router-dom";
 import { clean5DaysForecastData } from "../functionality/DataPrepare";
 import { APIKey } from '../functionality/APIKey';
+import Timer from "../components/timer/Timer";
 
 function HomePage(props) {
     const [city, setCity] = useState('');
@@ -15,9 +16,13 @@ function HomePage(props) {
     //you can use the ID from the city in apiCallCondition, but only for the Forecast call to the API,
     //for the OneCall call, latitude and longitude are needed, and the Forecast call accepts that data too
     const weatherContext = useContext(WeatherContext);
-
+    const [timer, setTimer] = useState(0);
     const language = weatherContext.language;
     const unitSystem = weatherContext.unitSystem;
+
+    function timerHandler() {
+        setTimer(timer + 1);
+    }
 
     useEffect(() => {
         if ("geolocation" in navigator && !weatherContext.overrideGeolocation) {
@@ -31,7 +36,6 @@ function HomePage(props) {
                 weatherContext.changeApiCallCondition(`lat=${position.coords.latitude}&lon=${position.coords.longitude}`);
                 console.log(position);
             }, (error) => {
-                // alert('location services unavailable');
                 console.log(error)
             },
                 options);
@@ -42,7 +46,6 @@ function HomePage(props) {
     useEffect(() => {
         //ny: 5128581
         //quet: 3590979       
-        // const interval = setInterval(() => {
         fetch(`https://api.openweathermap.org/data/2.5/forecast?${weatherContext.apiCallCondition}&appid=${APIKey}&units=${unitSystem}&lang=${language}`)
             .then((response) => {
                 return response.json();
@@ -51,20 +54,14 @@ function HomePage(props) {
                 const [cityData, listData] = clean5DaysForecastData(data, language, unitSystem);
                 setCity(cityData);
                 setList(listData);
-                // console.log('data changed: ', new Date());
             })
 
-        // }
-        //     , 600000);
-
-        // return () => {
-        //     clearInterval(interval);
-        // }
-    }, [setCity, setList, language, unitSystem, weatherContext]);
+    }, [setCity, setList, language, unitSystem, weatherContext, timer]);
 
     return (
         <>
             <h1 className={styles.title}>{homePageTitle[language]}</h1>
+            <Timer setTimer={timerHandler} timer={timer} />
             <Card themeSelector={weatherContext.theme} >
                 <h3 className={styles.subTitle}>{city}</h3>
                 {
