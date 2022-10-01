@@ -9,7 +9,7 @@ function Timer(props) {
         const interval = setInterval(() => {
             props.setTimer()
             console.log('Timer has changed:', props.timer);
-        }, 6000);
+        }, 900000);
 
         return () => {
             clearInterval(interval);

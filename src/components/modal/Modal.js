@@ -5,6 +5,7 @@ import WeatherContext from "../../store/WheaterContext";
 import { useContext } from "react";
 import Li from "./Li";
 
+
 function Modal(props) {
     //the next line needs some work
     // const showModal = props.data.length > 1 ? props.isModalVisible : false;
@@ -14,6 +15,7 @@ function Modal(props) {
     const itemClickHandler = (event, param = {}) => {
         if (param.formatted) {
             weatherContext.changeApiCallCondition(`lat=${param.geometry.lat}&lon=${param.geometry.lng}`);
+            props.formSubmitted();
         }
         props.closeModalBackdrophandler();
     }
