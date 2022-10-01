@@ -24,8 +24,6 @@ function SearchBox(props) {
     };
     const hideModalBackdropHandler = () => {
         setModalIsShown(false);
-        console.log('backdrop has been clicked');
-
     }
 
     useEffect(() => {
@@ -33,8 +31,6 @@ function SearchBox(props) {
     }, [formSubmitted])
 
     const formSubmittedHandler = () => {
-        console.log('redirecting when selecting');
-        console.log(formSubmitted);
         setFormSubmitted(true);
     }
 
@@ -44,20 +40,16 @@ function SearchBox(props) {
             setTextBoxIsShown(true);
         const searchQuery = searchQueryRef.current.value;
         if (textBoxIsShown && searchQuery.trim().length !== 0) {
-            console.log('searching for: ', searchQuery);
             fetch(`https://api.opencagedata.com/geocode/v1/json?q=${searchQuery}&key=${OpenCageGeocodingAPIKey}&language=${weatherContext.language}&pretty=1`)
                 .then((response) => {
                     return response.json();
                 }).then((data) => {
-                    console.log(data.results);
                     switch (data.results.length) {
                         case 1:
-                            console.log('Just 1 record returned');
                             weatherContext.changeApiCallCondition(`lat=${data.results[0].geometry.lat}&lon=${data.results[0].geometry.lng}`)
                             setFormSubmitted(true);
                             break;
                         case 0:
-                            console.log('No records')
                             setUserData(alternativeMessages.cityDataUnavailable[weatherContext.language]);
                             setModalIsShown(true);
                             break;

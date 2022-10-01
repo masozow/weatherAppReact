@@ -8,7 +8,6 @@ function Timer(props) {
     useEffect(() => {
         const interval = setInterval(() => {
             props.setTimer()
-            console.log('Timer has changed:', props.timer);
         }, 900000);
 
         return () => {

@@ -34,13 +34,11 @@ function HomePage(props) {
             };
             navigator.geolocation.getCurrentPosition((position) => {
                 weatherContext.changeApiCallCondition(`lat=${position.coords.latitude}&lon=${position.coords.longitude}`);
-                console.log(position);
             }, (error) => {
                 console.log(error)
             },
                 options);
         }
-        console.log(navigator.geolocation)
     }, [weatherContext])
 
     useEffect(() => {
