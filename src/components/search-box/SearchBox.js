@@ -2,12 +2,11 @@ import styles from './searchBox.module.css';
 import SearchIcon from './SearchIcon';
 import SearchTextBox from './SearchTextBox';
 import { useState, createRef, useContext, useEffect } from "react";
-import { OpenCageGeocodingAPIKey } from '../../functionality/APIKey';
 import Modal from '../modal/Modal';
 import Backdrop from '../modal/Backdrop';
 import WeatherContext from '../../store/WheaterContext';
-import { alternativeMessages } from '../../functionality/LocaleStrings';
 import { Redirect } from 'react-router-dom';
+import { submitForm } from './functions/submitForm';
 
 
 function SearchBox(props) {
@@ -22,8 +21,11 @@ function SearchBox(props) {
         if (searchQueryRef.current.value.trim().length === 0)
             setTextBoxIsShown(false);
     };
-    const hideModalBackdropHandler = () => {
-        setModalIsShown(false);
+    const handleTextBoxShow = () => {
+        setTextBoxIsShown(true);
+    }
+    const modalBackdropHandler = () => {
+        setModalIsShown(!modalIsShown);
     }
 
     useEffect(() => {
@@ -34,32 +36,9 @@ function SearchBox(props) {
         setFormSubmitted(true);
     }
 
-    function handleSubmit(event) {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        if (!modalIsShown)
-            setTextBoxIsShown(true);
-        const searchQuery = searchQueryRef.current.value;
-        if (textBoxIsShown && searchQuery.trim().length !== 0) {
-            fetch(`https://api.opencagedata.com/geocode/v1/json?q=${searchQuery}&key=${OpenCageGeocodingAPIKey}&language=${weatherContext.language}&pretty=1`)
-                .then((response) => {
-                    return response.json();
-                }).then((data) => {
-                    switch (data.results.length) {
-                        case 1:
-                            weatherContext.changeApiCallCondition(`lat=${data.results[0].geometry.lat}&lon=${data.results[0].geometry.lng}`)
-                            setFormSubmitted(true);
-                            break;
-                        case 0:
-                            setUserData(alternativeMessages.cityDataUnavailable[weatherContext.language]);
-                            setModalIsShown(true);
-                            break;
-                        default:
-                            setUserData(data.results);
-                            setModalIsShown(true);
-                            break;
-                    }
-                });
-        }
+        submitForm(searchQueryRef.current.value, weatherContext.language, modalIsShown, modalBackdropHandler, handleTextBoxShow, textBoxIsShown, formSubmittedHandler, setUserData, weatherContext);
     }
 
     return (
@@ -67,8 +46,8 @@ function SearchBox(props) {
             <SearchTextBox autoFocus textBoxIsVisible={textBoxIsShown} ref={searchQueryRef} />
             <SearchIcon handleClick={handleSubmit} />
             {/* showTextBox={showTextBoxHandler} */}
-            <Modal isModalVisible={modalIsShown} data={userData} closeModalBackdrophandler={hideModalBackdropHandler} formSubmitted={formSubmittedHandler} />
-            <Backdrop isBackdropVisible={modalIsShown} isBackdropVisibleHandler={hideModalBackdropHandler} />
+            <Modal isModalVisible={modalIsShown} data={userData} closeModalBackdrophandler={modalBackdropHandler} formSubmitted={formSubmittedHandler} />
+            <Backdrop isBackdropVisible={modalIsShown} isBackdropVisibleHandler={modalBackdropHandler} />
             {formSubmitted && <Redirect to='/' />}
         </form>
     );
