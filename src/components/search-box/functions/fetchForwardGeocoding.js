@@ -5,7 +5,6 @@ export async function fetchForwardGeocoding(searchQuery, language) {
         .then((response) => {
             return response.json();
         }).then((data) => {
-            console.log('data from fetch: ', data);
             return data;
         }).catch((error) => {
             console.log('Fetching error: ', error);
