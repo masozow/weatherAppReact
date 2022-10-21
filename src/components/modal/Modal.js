@@ -6,6 +6,7 @@ import { useContext } from "react";
 import Li from "./Li";
 
 
+
 function Modal(props) {
     //the next line needs some work
     // const showModal = props.data.length > 1 ? props.isModalVisible : false;
@@ -39,7 +40,7 @@ function Modal(props) {
         }
         else {
             return (
-                <p onClick={itemClickHandler} >{data}</p>
+                <p onClick={itemClickHandler} >{data ? data : 'undefined'}</p>
             )
         }
     }
