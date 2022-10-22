@@ -1,17 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import DailyWeather from "../components/daily-weather/DailyWeather";
 import Card from "../components/layout/Card";
 import styles from './HomePage.module.css';
 import { homePageTitle } from "../functionality/LocaleStrings";
 import WeatherContext from "../store/WheaterContext";
 import { NavLink } from "react-router-dom";
-import { clean5DaysForecastData } from "../functionality/DataPrepare";
-import { APIKey } from '../functionality/APIKey';
 import Timer from "../components/timer/Timer";
+import useGeolocation from "./pages_hooks/useGeolocation";
+import useFetchHomePageData from "./pages_hooks/useFetchHomePageData";
 
 function HomePage(props) {
-    const [city, setCity] = useState('');
-    const [list, setList] = useState([]);
     // const [apiCallCondition, setApiCallCondition] = useState('lat=40.776676&lon=-73.971321');
     //you can use the ID from the city in apiCallCondition, but only for the Forecast call to the API,
     //for the OneCall call, latitude and longitude are needed, and the Forecast call accepts that data too
@@ -24,37 +22,8 @@ function HomePage(props) {
         setTimer(timer + 1);
     }
 
-    useEffect(() => {
-        if ("geolocation" in navigator && !weatherContext.overrideGeolocation) {
-            //trying to solve geolocation problem with options
-            const options = {
-                enableHighAccuracy: true,
-                timeout: 5000,
-                maximumAge: 0
-            };
-            navigator.geolocation.getCurrentPosition((position) => {
-                weatherContext.changeApiCallCondition(`lat=${position.coords.latitude}&lon=${position.coords.longitude}`);
-            }, (error) => {
-                console.log(error)
-            },
-                options);
-        }
-    }, [weatherContext])
-
-    useEffect(() => {
-        //ny: 5128581
-        //quet: 3590979       
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?${weatherContext.apiCallCondition}&appid=${APIKey}&units=${unitSystem}&lang=${language}`)
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                const [cityData, listData] = clean5DaysForecastData(data, language, unitSystem);
-                setCity(cityData);
-                setList(listData);
-            })
-
-    }, [setCity, setList, language, unitSystem, weatherContext, timer]);
+    useGeolocation();
+    const [city, list] = useFetchHomePageData(language, unitSystem, timer);
 
     return (
         <>
