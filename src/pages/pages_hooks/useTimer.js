@@ -1,20 +1,18 @@
 import { useEffect } from "react";
 
-
-
-function Timer(props) {
+function useTimer(timer, setTimer) {
 
 
     useEffect(() => {
         const interval = setInterval(() => {
-            props.setTimer()
+            setTimer()
         }, 900000);
 
         return () => {
             clearInterval(interval);
         }
-    }, [props]);
+    }, [timer, setTimer]);
 
     return (null);
 }
-export default Timer;
+export default useTimer;

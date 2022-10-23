@@ -3,6 +3,10 @@ import WeatherContext from "../../store/WheaterContext";
 import { APIKey } from "../../functionality/APIKey";
 import { clean5DaysForecastData } from "../../functionality/DataPrepare";
 
+// const [apiCallCondition, setApiCallCondition] = useState('lat=40.776676&lon=-73.971321');
+//you can use the ID from the city in apiCallCondition, but only for the Forecast call to the API,
+//for the OneCall call, latitude and longitude are needed, and the Forecast call accepts that data too
+
 const useFetchHomePageData = (language, unitSystem, timer) => {
     const [city, setCity] = useState('');
     const [list, setList] = useState([]);
